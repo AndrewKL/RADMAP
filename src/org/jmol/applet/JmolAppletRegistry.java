@@ -39,6 +39,23 @@ final class JmolAppletRegistry {
 
   static Map<String, Object> htRegistry = new Hashtable<String, Object>();
 
+  /**
+   * JSObject.getWindow(Applet) was removed from the JDK along with the browser
+   * plugin, so look it up reflectively and fail cleanly when it is absent.
+   * 
+   * @param applet 
+   * @return the browser window hosting the applet
+   */
+  static JSObject getWindow(Applet applet) {
+    try {
+      return (JSObject) JSObject.class.getMethod("getWindow", Applet.class)
+          .invoke(null, applet);
+    } catch (Exception e) {
+      throw new UnsupportedOperationException(
+          "LiveConnect (JSObject.getWindow) is not available in this JVM", e);
+    }
+  }
+
   synchronized static void checkIn(String name, JmolSyncInterface applet) {
     cleanRegistry();
     if (name != null) {
@@ -90,7 +107,7 @@ final class JmolAppletRegistry {
       String theApplet = entry.getKey();
       try {
         app = (Applet) (entry.getValue());
-        JSObject theWindow = JSObject.getWindow(app);
+        JSObject theWindow = getWindow(app);
         //System.out.print("checking " + app + " window : ");
         closed = ((Boolean) theWindow.getMember("closed")).booleanValue();
         //System.out.println(closed);

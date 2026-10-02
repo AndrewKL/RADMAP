@@ -117,55 +117,55 @@ public class ActionManager {
   }
   
   static {
-    newAction(ACTION_center,                "_center",               GT._("center"));
-    newAction(ACTION_translate,             "_translate",            GT._("translate"));
-    newAction(ACTION_rotate,                "_rotate",               GT._("rotate"));
-    newAction(ACTION_rotateZ,               "_rotateZ",              GT._("rotate Z"));
-    newAction(ACTION_rotateZorZoom,         "_rotateZorZoom",        GT._("rotate Z (horizontal motion of mouse) or zoom (vertical motion of mouse)"));
-    newAction(ACTION_wheelZoom,             "_wheelZoom",            GT._("zoom"));
-    newAction(ACTION_slideZoom,             "_slideZoom",            GT._("zoom (along right edge of window)"));
-    newAction(ACTION_navTranslate,          "_navTranslate",         GT._("translate navigation point (requires {0} and {1})", new String[] {"set NAVIGATIONMODE", "set picking NAVIGATE"}));
-    newAction(ACTION_swipe,                 "_swipe",                GT._("spin model (swipe and release button and stop motion simultaneously)"));
-    newAction(ACTION_spinDrawObjectCW,      "_spinDrawObjectCW",     GT._("click on two points to spin around axis clockwise (requires {0})", "set picking SPIN"));
-    newAction(ACTION_spinDrawObjectCCW,     "_spinDrawObjectCCW",    GT._("click on two points to spin around axis counterclockwise (requires {0})", "set picking SPIN"));
-    newAction(ACTION_slab,                  "_slab",                 GT._("adjust slab (front plane; requires {0})", "SLAB ON"));
-    newAction(ACTION_depth,                 "_depth",                GT._("adjust depth (back plane; requires {0})", "SLAB ON"));
-    newAction(ACTION_slabAndDepth,          "_slabAndDepth",         GT._("move slab/depth window (both planes; requires {0})", "SLAB ON"));
-    newAction(ACTION_popupMenu,             "_popupMenu",            GT._("pop up the full context menu"));
-    newAction(ACTION_clickFrank,            "_clickFrank",           GT._("pop up recent context menu (click on Jmol frank)"));
-    newAction(ACTION_select,                "_select",               GT._("select an atom (requires {0})", "set pickingStyle EXTENDEDSELECT"));
-    newAction(ACTION_selectNone,            "_selectNone",           GT._("select NONE (requires {0})", "set pickingStyle EXTENDEDSELECT"));
-    newAction(ACTION_selectToggle,          "_selectToggle",         GT._("toggle selection (requires {0})", "set pickingStyle DRAG/EXTENDEDSELECT/RASMOL"));
-    newAction(ACTION_selectAndNot,          "_selectAndNot",         GT._("unselect this group of atoms (requires {0})", "set pickingStyle DRAG/EXTENDEDSELECT"));
-    newAction(ACTION_selectOr,              "_selectOr",             GT._("add this group of atoms to the set of selected atoms (requires {0})", "set pickingStyle DRAG/EXTENDEDSELECT"));
-    newAction(ACTION_selectToggleExtended,  "_selectToggleOr",       GT._("if all are selected, unselect all, otherwise add this group of atoms to the set of selected atoms (requires {0})", "set pickingStyle DRAG"));
-    newAction(ACTION_dragSelected,          "_dragSelected",         GT._("move selected atoms (requires {0})", "set DRAGSELECTED"));
-    newAction(ACTION_selectAndDrag,         "_selectAndDrag",        GT._("select and drag atoms (requires {0})", "set DRAGSELECTED"));
-    newAction(ACTION_dragZ,                 "_dragZ",                GT._("drag atoms in Z direction (requires {0})", "set DRAGSELECTED"));
-    newAction(ACTION_rotateSelected,        "_rotateSelected",       GT._("rotate selected atoms (requires {0})", "set DRAGSELECTED"));
-    newAction(ACTION_rotateBranch,          "_rotateBranch",         GT._("rotate branch around bond (requires {0})", "set picking ROTATEBOND"));
-    newAction(ACTION_dragAtom,              "_dragAtom",             GT._("move atom (requires {0})", "set picking DRAGATOM"));
-    newAction(ACTION_dragMinimize,          "_dragMinimize",         GT._("move atom and minimize molecule (requires {0})", "set picking DRAGMINIMIZE"));
-    newAction(ACTION_dragMinimizeMolecule,  "_dragMinimizeMolecule", GT._("move and minimize molecule (requires {0})", "set picking DRAGMINIMIZEMOLECULE"));
-    newAction(ACTION_dragLabel,             "_dragLabel",            GT._("move label (requires {0})", "set picking LABEL"));
-    newAction(ACTION_dragDrawPoint,         "_dragDrawPoint",        GT._("move specific DRAW point (requires {0})", "set picking DRAW"));
-    newAction(ACTION_dragDrawObject,        "_dragDrawObject",       GT._("move whole DRAW object (requires {0})", "set picking DRAW"));
-    newAction(ACTION_pickAtom,              "_pickAtom",             GT._("pick an atom"));
-    newAction(ACTION_pickPoint,             "_pickPoint",            GT._("pick a DRAW point (for measurements) (requires {0}", "set DRAWPICKING"));
-    newAction(ACTION_pickLabel,             "_pickLabel",            GT._("pick a label to toggle it hidden/displayed (requires {0})", "set picking LABEL"));
-    newAction(ACTION_pickMeasure,           "_pickMeasure",          GT._("pick an atom to include it in a measurement (after starting a measurement or after {0})", "set picking DISTANCE/ANGLE/TORSION"));
-    newAction(ACTION_setMeasure,            "_setMeasure",           GT._("pick an atom to initiate or conclude a measurement"));
-    newAction(ACTION_pickIsosurface,        "_pickIsosurface",       GT._("pick an ISOSURFACE point (requires {0}", "set DRAWPICKING"));
-    newAction(ACTION_pickNavigate,          "_pickNavigate",         GT._("pick a point or atom to navigate to (requires {0})", "set NAVIGATIONMODE"));
-    newAction(ACTION_deleteAtom,            "_deleteAtom",           GT._("delete atom (requires {0})", "set picking DELETE ATOM"));
-    newAction(ACTION_deleteBond,            "_deleteBond",           GT._("delete bond (requires {0})", "set picking DELETE BOND"));
-    newAction(ACTION_connectAtoms,          "_pickConnect",          GT._("connect atoms (requires {0})", "set picking CONNECT"));
-    newAction(ACTION_assignNew,             "_assignNew",            GT._("assign/new atom or bond (requires {0})", "set picking assignAtom_??/assignBond_?"));
-    newAction(ACTION_reset,                 "_reset",                GT._("reset (when clicked off the model)"));
-    newAction(ACTION_stopMotion,            "_stopMotion",           GT._("stop motion (requires {0})", "set waitForMoveTo FALSE"));
-    newAction(ACTION_multiTouchSimulation,  "_multiTouchSimulation", GT._("simulate multi-touch using the mouse)"));
+    newAction(ACTION_center,                "_center",               GT.$("center"));
+    newAction(ACTION_translate,             "_translate",            GT.$("translate"));
+    newAction(ACTION_rotate,                "_rotate",               GT.$("rotate"));
+    newAction(ACTION_rotateZ,               "_rotateZ",              GT.$("rotate Z"));
+    newAction(ACTION_rotateZorZoom,         "_rotateZorZoom",        GT.$("rotate Z (horizontal motion of mouse) or zoom (vertical motion of mouse)"));
+    newAction(ACTION_wheelZoom,             "_wheelZoom",            GT.$("zoom"));
+    newAction(ACTION_slideZoom,             "_slideZoom",            GT.$("zoom (along right edge of window)"));
+    newAction(ACTION_navTranslate,          "_navTranslate",         GT.$("translate navigation point (requires {0} and {1})", new String[] {"set NAVIGATIONMODE", "set picking NAVIGATE"}));
+    newAction(ACTION_swipe,                 "_swipe",                GT.$("spin model (swipe and release button and stop motion simultaneously)"));
+    newAction(ACTION_spinDrawObjectCW,      "_spinDrawObjectCW",     GT.$("click on two points to spin around axis clockwise (requires {0})", "set picking SPIN"));
+    newAction(ACTION_spinDrawObjectCCW,     "_spinDrawObjectCCW",    GT.$("click on two points to spin around axis counterclockwise (requires {0})", "set picking SPIN"));
+    newAction(ACTION_slab,                  "_slab",                 GT.$("adjust slab (front plane; requires {0})", "SLAB ON"));
+    newAction(ACTION_depth,                 "_depth",                GT.$("adjust depth (back plane; requires {0})", "SLAB ON"));
+    newAction(ACTION_slabAndDepth,          "_slabAndDepth",         GT.$("move slab/depth window (both planes; requires {0})", "SLAB ON"));
+    newAction(ACTION_popupMenu,             "_popupMenu",            GT.$("pop up the full context menu"));
+    newAction(ACTION_clickFrank,            "_clickFrank",           GT.$("pop up recent context menu (click on Jmol frank)"));
+    newAction(ACTION_select,                "_select",               GT.$("select an atom (requires {0})", "set pickingStyle EXTENDEDSELECT"));
+    newAction(ACTION_selectNone,            "_selectNone",           GT.$("select NONE (requires {0})", "set pickingStyle EXTENDEDSELECT"));
+    newAction(ACTION_selectToggle,          "_selectToggle",         GT.$("toggle selection (requires {0})", "set pickingStyle DRAG/EXTENDEDSELECT/RASMOL"));
+    newAction(ACTION_selectAndNot,          "_selectAndNot",         GT.$("unselect this group of atoms (requires {0})", "set pickingStyle DRAG/EXTENDEDSELECT"));
+    newAction(ACTION_selectOr,              "_selectOr",             GT.$("add this group of atoms to the set of selected atoms (requires {0})", "set pickingStyle DRAG/EXTENDEDSELECT"));
+    newAction(ACTION_selectToggleExtended,  "_selectToggleOr",       GT.$("if all are selected, unselect all, otherwise add this group of atoms to the set of selected atoms (requires {0})", "set pickingStyle DRAG"));
+    newAction(ACTION_dragSelected,          "_dragSelected",         GT.$("move selected atoms (requires {0})", "set DRAGSELECTED"));
+    newAction(ACTION_selectAndDrag,         "_selectAndDrag",        GT.$("select and drag atoms (requires {0})", "set DRAGSELECTED"));
+    newAction(ACTION_dragZ,                 "_dragZ",                GT.$("drag atoms in Z direction (requires {0})", "set DRAGSELECTED"));
+    newAction(ACTION_rotateSelected,        "_rotateSelected",       GT.$("rotate selected atoms (requires {0})", "set DRAGSELECTED"));
+    newAction(ACTION_rotateBranch,          "_rotateBranch",         GT.$("rotate branch around bond (requires {0})", "set picking ROTATEBOND"));
+    newAction(ACTION_dragAtom,              "_dragAtom",             GT.$("move atom (requires {0})", "set picking DRAGATOM"));
+    newAction(ACTION_dragMinimize,          "_dragMinimize",         GT.$("move atom and minimize molecule (requires {0})", "set picking DRAGMINIMIZE"));
+    newAction(ACTION_dragMinimizeMolecule,  "_dragMinimizeMolecule", GT.$("move and minimize molecule (requires {0})", "set picking DRAGMINIMIZEMOLECULE"));
+    newAction(ACTION_dragLabel,             "_dragLabel",            GT.$("move label (requires {0})", "set picking LABEL"));
+    newAction(ACTION_dragDrawPoint,         "_dragDrawPoint",        GT.$("move specific DRAW point (requires {0})", "set picking DRAW"));
+    newAction(ACTION_dragDrawObject,        "_dragDrawObject",       GT.$("move whole DRAW object (requires {0})", "set picking DRAW"));
+    newAction(ACTION_pickAtom,              "_pickAtom",             GT.$("pick an atom"));
+    newAction(ACTION_pickPoint,             "_pickPoint",            GT.$("pick a DRAW point (for measurements) (requires {0}", "set DRAWPICKING"));
+    newAction(ACTION_pickLabel,             "_pickLabel",            GT.$("pick a label to toggle it hidden/displayed (requires {0})", "set picking LABEL"));
+    newAction(ACTION_pickMeasure,           "_pickMeasure",          GT.$("pick an atom to include it in a measurement (after starting a measurement or after {0})", "set picking DISTANCE/ANGLE/TORSION"));
+    newAction(ACTION_setMeasure,            "_setMeasure",           GT.$("pick an atom to initiate or conclude a measurement"));
+    newAction(ACTION_pickIsosurface,        "_pickIsosurface",       GT.$("pick an ISOSURFACE point (requires {0}", "set DRAWPICKING"));
+    newAction(ACTION_pickNavigate,          "_pickNavigate",         GT.$("pick a point or atom to navigate to (requires {0})", "set NAVIGATIONMODE"));
+    newAction(ACTION_deleteAtom,            "_deleteAtom",           GT.$("delete atom (requires {0})", "set picking DELETE ATOM"));
+    newAction(ACTION_deleteBond,            "_deleteBond",           GT.$("delete bond (requires {0})", "set picking DELETE BOND"));
+    newAction(ACTION_connectAtoms,          "_pickConnect",          GT.$("connect atoms (requires {0})", "set picking CONNECT"));
+    newAction(ACTION_assignNew,             "_assignNew",            GT.$("assign/new atom or bond (requires {0})", "set picking assignAtom_??/assignBond_?"));
+    newAction(ACTION_reset,                 "_reset",                GT.$("reset (when clicked off the model)"));
+    newAction(ACTION_stopMotion,            "_stopMotion",           GT.$("stop motion (requires {0})", "set waitForMoveTo FALSE"));
+    newAction(ACTION_multiTouchSimulation,  "_multiTouchSimulation", GT.$("simulate multi-touch using the mouse)"));
     newAction(ACTION_assignFragment,        "_assignFragment",       "assign Fragment" );
-    newAction(ACTION_selectAtom,            "_selectAtom",           "selectAtom" );//TODO figure out GT._(string, string)
+    newAction(ACTION_selectAtom,            "_selectAtom",           "selectAtom" );//TODO figure out GT.$(string, string)
   }
   
   public Atom currentAtomSelection;
@@ -1894,12 +1894,12 @@ public class ActionManager {
     if (queuedAtomCount < 2) {
       if (isSpin)
       viewer.scriptStatus(queuedAtomCount == 1 ?
-          GT._("pick one more atom in order to spin the model around an axis") :
-          GT._("pick two atoms in order to spin the model around an axis"));
+          GT.$("pick one more atom in order to spin the model around an axis") :
+          GT.$("pick two atoms in order to spin the model around an axis"));
       else
         viewer.scriptStatus(queuedAtomCount == 1 ?
-            GT._("pick one more atom in order to display the symmetry relationship") :
-            GT._("pick two atoms in order to display the symmetry relationship between them"));
+            GT.$("pick one more atom in order to display the symmetry relationship") :
+            GT.$("pick two atoms in order to display the symmetry relationship between them"));
       return;
     }
     String s = measurementQueued.getMeasurementScript(" ", false);

@@ -545,10 +545,10 @@ abstract public class GenericPopup {
     String text = getMenuText("writeFileTextVARIABLE");
     menu = htMenus.get("writeFileTextVARIABLE");
     if (modelSetFileName.equals("zapped") || modelSetFileName.equals("")) {
-      setLabel(menu, GT._("No atoms loaded"));
+      setLabel(menu, GT.$("No atoms loaded"));
       enableMenuItem(menu, false);
     } else {
-      setLabel(menu, GT._(text, modelSetFileName, true));
+      setLabel(menu, GT.$(text, modelSetFileName, true));
       enableMenuItem(menu, true);
     }
   }
@@ -558,7 +558,7 @@ abstract public class GenericPopup {
     if (menu == null)
       return;
     enableMenu(menu, atomCount != 0);
-    setLabel(menu, GT._(getMenuText("selectMenuText"), viewer.getSelectionCount(), true));
+    setLabel(menu, GT.$(getMenuText("selectMenuText"), viewer.getSelectionCount(), true));
   }
 
   private void updateElementsComputedMenu(BitSet elementsPresentBitSet) {
@@ -660,11 +660,11 @@ abstract public class GenericPopup {
     int nOrb = (mos == null ? 0 : mos.size());
     String text = getMenuText("surfMoComputedMenuText");
     if (nOrb == 0) {
-      setLabel(menu, GT._(text, ""));
+      setLabel(menu, GT.$(text, ""));
       enableMenu(menu, false);
       return;
     }
-    setLabel(menu, GT._(text, nOrb));
+    setLabel(menu, GT.$(text, nOrb));
     enableMenu(menu, true);
     Object subMenu = menu;
     int nmod = (nOrb % itemMax);
@@ -795,7 +795,7 @@ abstract public class GenericPopup {
     if (infolist == null)
       return;
     String name = (String) info.get("spaceGroupName");
-    setLabel(menu, name == null ? GT._("Space Group") : name);
+    setLabel(menu, name == null ? GT.$("Space Group") : name);
     Object subMenu = menu;
     int nmod = itemMax;
     int pt = (infolist.length > itemMax ? 0 : Integer.MIN_VALUE);
@@ -852,13 +852,13 @@ abstract public class GenericPopup {
     if (menu == null)
       return;
     enableMenu(menu, (modelCount > 0));
-    setLabel(menu, (modelIndex < 0 ? GT._(getMenuText("allModelsText"),
+    setLabel(menu, (modelIndex < 0 ? GT.$(getMenuText("allModelsText"),
         modelCount, true) : getModelLabel()));
     removeAll(menu);
     if (modelCount < 1)
       return;
     if (modelCount > 1)
-      addCheckboxMenuItem(menu, GT._("All", true), "frame 0 ##", null,
+      addCheckboxMenuItem(menu, GT.$("All", true), "frame 0 ##", null,
          (modelIndex < 0), false);
 
     Object subMenu = menu;
@@ -905,10 +905,10 @@ abstract public class GenericPopup {
     if (!isMultiConfiguration)
       return;
     int nAltLocs = altlocs.length();
-    setLabel(menu, GT._(getMenuText("configurationMenuText"), nAltLocs, true));
+    setLabel(menu, GT.$(getMenuText("configurationMenuText"), nAltLocs, true));
     removeAll(menu);
     String script = "hide none ##CONFIG";
-    addCheckboxMenuItem(menu, GT._("All", true), script, null,
+    addCheckboxMenuItem(menu, GT.$("All", true), script, null,
         (updateMode == UPDATE_CONFIG && configurationSelected.equals(script)), false);
     for (int i = 0; i < nAltLocs; i++) {
       script = "configuration " + (i + 1) + "; hide thisModel and not selected ##CONFIG";
@@ -933,7 +933,7 @@ abstract public class GenericPopup {
     if (modelSetName == null || isZapped)
       return;
     if (isMultiFrame) {
-      modelSetName = GT._(getMenuText("modelSetCollectionText"), modelCount);
+      modelSetName = GT.$(getMenuText("modelSetCollectionText"), modelCount);
       if (modelSetName.length() > titleWidthMax)
         modelSetName = modelSetName.substring(0, titleWidthMax) + "...";
     } else if (viewer.getBooleanProperty("hideNameInPopup")) {
@@ -945,20 +945,20 @@ abstract public class GenericPopup {
     enableMenu(menu, true);
     // 100 here is totally arbitrary. You can do a minimization on any number of atoms
     enableMenu(htMenus.get("computationMenu"), atomCount <= 100);
-    addMenuItem(menu, GT._(getMenuText("atomsText"), atomCount, true));
-    addMenuItem(menu, GT._(getMenuText("bondsText"), viewer
+    addMenuItem(menu, GT.$(getMenuText("atomsText"), atomCount, true));
+    addMenuItem(menu, GT.$(getMenuText("bondsText"), viewer
         .getBondCountInModel(modelIndex), true));
     if (isPDB) {
       addMenuSeparator(menu);
-      addMenuItem(menu, GT._(getMenuText("groupsText"), viewer
+      addMenuItem(menu, GT.$(getMenuText("groupsText"), viewer
           .getGroupCountInModel(modelIndex), true));
-      addMenuItem(menu, GT._(getMenuText("chainsText"), viewer
+      addMenuItem(menu, GT.$(getMenuText("chainsText"), viewer
           .getChainCountInModel(modelIndex), true));
-      addMenuItem(menu, GT._(getMenuText("polymersText"), viewer
+      addMenuItem(menu, GT.$(getMenuText("polymersText"), viewer
           .getPolymerCountInModel(modelIndex), true));
       Object submenu = htMenus.get("BiomoleculesMenu");
       if (submenu == null) {
-        submenu = newMenu(GT._(getMenuText("biomoleculesMenuText")),
+        submenu = newMenu(GT.$(getMenuText("biomoleculesMenuText")),
             getId(menu) + ".biomolecules");
         addMenuSubMenu(menu, submenu);
       }
@@ -974,7 +974,7 @@ abstract public class GenericPopup {
           String script = (isMultiFrame ? ""
               : "save orientation;load \"\" FILTER \"biomolecule " + (i + 1) + "\";restore orientation;");
           int nAtoms = ((Integer) biomolecules.get(i).get("atomCount")).intValue();
-          String entryName = GT._(getMenuText(isMultiFrame ? "biomoleculeText"
+          String entryName = GT.$(getMenuText(isMultiFrame ? "biomoleculeText"
               : "loadBiomoleculeText"), new Object[] { Integer.valueOf(i + 1),
               Integer.valueOf(nAtoms) });
           addMenuItem(submenu, entryName, script, null);
@@ -984,13 +984,13 @@ abstract public class GenericPopup {
     if (isApplet && viewer.showModelSetDownload()
         && !viewer.getBooleanProperty("hideNameInPopup")) {
       addMenuSeparator(menu);
-      addMenuItem(menu, GT._(getMenuText("viewMenuText"), 
+      addMenuItem(menu, GT.$(getMenuText("viewMenuText"), 
           modelSetFileName, true), "show url", null);
     }
   }
 
   private String getModelLabel() {
-    return GT._(getMenuText("modelMenuText"), (modelIndex + 1) + "/" + modelCount, true);
+    return GT.$(getMenuText("modelMenuText"), (modelIndex + 1) + "/" + modelCount, true);
   }
 
   private void updateAboutSubmenu() {
@@ -1011,39 +1011,39 @@ abstract public class GenericPopup {
     htMenus.put("aboutJmolMenu", subMenu);
     addMenuItem(subMenu, JmolConstants.date);
     addMenuItem(subMenu, "http://www.jmol.org", "show url \"http://www.jmol.org\"", null);
-    addMenuItem(subMenu, GT._("Mouse Manual"), "show url \"http://wiki.jmol.org/index.php/Mouse_Manual\"", null);
-    addMenuItem(subMenu, GT._("Translations"), "show url \"http://wiki.jmol.org/index.php/Internationalisation\"", null);
+    addMenuItem(subMenu, GT.$("Mouse Manual"), "show url \"http://wiki.jmol.org/index.php/Mouse_Manual\"", null);
+    addMenuItem(subMenu, GT.$("Translations"), "show url \"http://wiki.jmol.org/index.php/Internationalisation\"", null);
 
-    subMenu = newMenu(GT._("System", true), "systemMenu");        
+    subMenu = newMenu(GT.$("System", true), "systemMenu");        
     addMenuSubMenu(menu, subMenu);
     htMenus.put("systemMenu", subMenu);
     addMenuItem(subMenu, viewer.getOperatingSystemName());
     int availableProcessors = Runtime.getRuntime().availableProcessors();
     if (availableProcessors > 0)
-      addMenuItem(subMenu, (availableProcessors == 1) ? GT._("1 processor", true)
-          : GT._("{0} processors", availableProcessors, true));
+      addMenuItem(subMenu, (availableProcessors == 1) ? GT.$("1 processor", true)
+          : GT.$("{0} processors", availableProcessors, true));
     else
-      addMenuItem(subMenu, GT._("unknown processor count", true));      
+      addMenuItem(subMenu, GT.$("unknown processor count", true));      
     addMenuSeparator(subMenu);
-    addMenuItem(subMenu, GT._("Java version:", true));
+    addMenuItem(subMenu, GT.$("Java version:", true));
     addMenuItem(subMenu, viewer.getJavaVendor());
     addMenuItem(subMenu, viewer.getJavaVersion());
     addMenuSeparator(subMenu);
-    addMenuItem(subMenu, GT._("Java memory usage:", true));    
+    addMenuItem(subMenu, GT.$("Java memory usage:", true));    
     Runtime runtime = Runtime.getRuntime();
     //runtime.gc();
     long mbTotal = convertToMegabytes(runtime.totalMemory());
     long mbFree = convertToMegabytes(runtime.freeMemory());
     long mbMax = convertToMegabytes(maxMemoryForNewerJvm());
-    addMenuItem(subMenu, GT._("{0} MB total", new Object[] { new Long(mbTotal) },
+    addMenuItem(subMenu, GT.$("{0} MB total", new Object[] { new Long(mbTotal) },
         true));
-    addMenuItem(subMenu, GT._("{0} MB free", new Object[] { new Long(mbFree) },
+    addMenuItem(subMenu, GT.$("{0} MB free", new Object[] { new Long(mbFree) },
         true));
     if (mbMax > 0)
-      addMenuItem(subMenu, GT._("{0} MB maximum",
+      addMenuItem(subMenu, GT.$("{0} MB maximum",
           new Object[] { new Long(mbMax) }, true));
     else
-      addMenuItem(subMenu, GT._("unknown maximum", true));
+      addMenuItem(subMenu, GT.$("unknown maximum", true));
   }
 
   private void updateLanguageSubmenu() {
@@ -1063,8 +1063,8 @@ abstract public class GenericPopup {
         String code = languages[i].code;
         String name = languages[i].language;
         String nativeName = languages[i].nativeLanguage;
-        String menuLabel = code + " - " + GT._(name, true);
-        if ((nativeName != null) && (!nativeName.equals(GT._(name, true)))) {
+        String menuLabel = code + " - " + GT.$(name, true);
+        if ((nativeName != null) && (!nativeName.equals(GT.$(name, true)))) {
           menuLabel += " - " + nativeName; 
         }
         addCheckboxMenuItem(

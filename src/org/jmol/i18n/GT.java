@@ -94,7 +94,7 @@ public class GT {
    * even though we set doTranslate false. That ensures that the language name
    * IN THIS LIST is untranslated, but it provides the code xgettext needs in
    * order to provide the list of names that will need translation by translators
-   * (the .po files). Later, in JmolPopup.updateLanguageMenu(), GT._() is used
+   * (the .po files). Later, in JmolPopup.updateLanguageMenu(), GT.$() is used
    * again to create the actual, localized menu item name.
    *
    * list order:
@@ -136,50 +136,50 @@ public class GT {
     boolean wasTranslating = doTranslate;
     doTranslate = false;
     languageList = new Language[] {
-      new Language("ar",    GT._("Arabic"),               "العربية",              false),
-      new Language("ast",   GT._("Asturian"),             "Asturian",             false),
-      new Language("bs",    GT._("Bosnian"),              "bosanski jezik",       false),
-      new Language("ca",    GT._("Catalan"),              "Català",               true),
-      new Language("cs",    GT._("Czech"),                "Čeština",              true),
-      new Language("da",    GT._("Danish"),               "Dansk",                true),
-      new Language("de",    GT._("German"),               "Deutsch",              true),
-      new Language("el",    GT._("Greek"),                "Ελληνικά",             false),
-      new Language("en_AU", GT._("Australian English"),   "Australian English",   false),
-      new Language("en_GB", GT._("British English"),      "British English",      true),
-      new Language("en_US", GT._("American English"),     "American English",     true), // global default for "en" will be "en_US"
-      new Language("es",    GT._("Spanish"),              "Español",              true),
-      new Language("et",    GT._("Estonian"),             "Eesti",                false),
-      new Language("fi",    GT._("Finnish"),              "Suomi",                true),
-      new Language("fo",    GT._("Faroese"),              "Føroyskt",             false),
-      new Language("fr",    GT._("French"),               "Français",             true),
-      new Language("fy",    GT._("Frisian"),              "Frysk",                false),
-      new Language("gl",    GT._("Galician"),             "Galego",               false),
-      new Language("hr",    GT._("Croatian"),             "Hrvatski",             false),
-      new Language("hu",    GT._("Hungarian"),            "Magyar",               true),
-      new Language("hy",    GT._("Armenian"),             "Հայերեն",                false),
-      new Language("id",    GT._("Indonesian"),           "Indonesia",            true),
-      new Language("it",    GT._("Italian"),              "Italiano",             true),
-      new Language("ja",    GT._("Japanese"),             "日本語",               false),
-      new Language("jv",    GT._("Javanese"),             "Basa Jawa",            false),
-      new Language("ko",    GT._("Korean"),               "한국어",               true),
-      new Language("ms",    GT._("Malay"),                "Bahasa Melayu",        true),
-      new Language("nb",    GT._("Norwegian Bokmal"),     "Norsk Bokmål",         false),
-      new Language("nl",    GT._("Dutch"),                "Nederlands",           true),
-      new Language("oc",    GT._("Occitan"),              "Occitan",              false),
-      new Language("pl",    GT._("Polish"),               "Polski",               false),
-      new Language("pt",    GT._("Portuguese"),           "Português",            false),
-      new Language("pt_BR", GT._("Brazilian Portuguese"), "Português brasileiro", true),
-      new Language("ru",    GT._("Russian"),              "Русский",              false),
-      new Language("sl",    GT._("Slovenian"),            "Slovenščina",          false),
-      new Language("sr",    GT._("Serbian"),              "српски језик",         false),
-      new Language("sv",    GT._("Swedish"),              "Svenska",              false),
-      new Language("ta",    GT._("Tamil"),                "தமிழ்",                 false),
-      new Language("te",    GT._("Telugu"),               "తెలుగు",                  false),
-      new Language("tr",    GT._("Turkish"),              "Türkçe",               true),
-      new Language("ug",    GT._("Uyghur"),               "Uyƣurqə",              false),
-      new Language("uk",    GT._("Ukrainian"),            "Українська",           true),
-      new Language("zh_CN", GT._("Simplified Chinese"),   "简体中文",             true),
-      new Language("zh_TW", GT._("Traditional Chinese"),  "繁體中文",             true),
+      new Language("ar",    GT.$("Arabic"),               "العربية",              false),
+      new Language("ast",   GT.$("Asturian"),             "Asturian",             false),
+      new Language("bs",    GT.$("Bosnian"),              "bosanski jezik",       false),
+      new Language("ca",    GT.$("Catalan"),              "Català",               true),
+      new Language("cs",    GT.$("Czech"),                "Čeština",              true),
+      new Language("da",    GT.$("Danish"),               "Dansk",                true),
+      new Language("de",    GT.$("German"),               "Deutsch",              true),
+      new Language("el",    GT.$("Greek"),                "Ελληνικά",             false),
+      new Language("en_AU", GT.$("Australian English"),   "Australian English",   false),
+      new Language("en_GB", GT.$("British English"),      "British English",      true),
+      new Language("en_US", GT.$("American English"),     "American English",     true), // global default for "en" will be "en_US"
+      new Language("es",    GT.$("Spanish"),              "Español",              true),
+      new Language("et",    GT.$("Estonian"),             "Eesti",                false),
+      new Language("fi",    GT.$("Finnish"),              "Suomi",                true),
+      new Language("fo",    GT.$("Faroese"),              "Føroyskt",             false),
+      new Language("fr",    GT.$("French"),               "Français",             true),
+      new Language("fy",    GT.$("Frisian"),              "Frysk",                false),
+      new Language("gl",    GT.$("Galician"),             "Galego",               false),
+      new Language("hr",    GT.$("Croatian"),             "Hrvatski",             false),
+      new Language("hu",    GT.$("Hungarian"),            "Magyar",               true),
+      new Language("hy",    GT.$("Armenian"),             "Հայերեն",                false),
+      new Language("id",    GT.$("Indonesian"),           "Indonesia",            true),
+      new Language("it",    GT.$("Italian"),              "Italiano",             true),
+      new Language("ja",    GT.$("Japanese"),             "日本語",               false),
+      new Language("jv",    GT.$("Javanese"),             "Basa Jawa",            false),
+      new Language("ko",    GT.$("Korean"),               "한국어",               true),
+      new Language("ms",    GT.$("Malay"),                "Bahasa Melayu",        true),
+      new Language("nb",    GT.$("Norwegian Bokmal"),     "Norsk Bokmål",         false),
+      new Language("nl",    GT.$("Dutch"),                "Nederlands",           true),
+      new Language("oc",    GT.$("Occitan"),              "Occitan",              false),
+      new Language("pl",    GT.$("Polish"),               "Polski",               false),
+      new Language("pt",    GT.$("Portuguese"),           "Português",            false),
+      new Language("pt_BR", GT.$("Brazilian Portuguese"), "Português brasileiro", true),
+      new Language("ru",    GT.$("Russian"),              "Русский",              false),
+      new Language("sl",    GT.$("Slovenian"),            "Slovenščina",          false),
+      new Language("sr",    GT.$("Serbian"),              "српски језик",         false),
+      new Language("sv",    GT.$("Swedish"),              "Svenska",              false),
+      new Language("ta",    GT.$("Tamil"),                "தமிழ்",                 false),
+      new Language("te",    GT.$("Telugu"),               "తెలుగు",                  false),
+      new Language("tr",    GT.$("Turkish"),              "Türkçe",               true),
+      new Language("ug",    GT.$("Uyghur"),               "Uyƣurqə",              false),
+      new Language("uk",    GT.$("Ukrainian"),            "Українська",           true),
+      new Language("zh_CN", GT.$("Simplified Chinese"),   "简体中文",             true),
+      new Language("zh_TW", GT.$("Traditional Chinese"),  "繁體中文",             true),
     };
     doTranslate = wasTranslating;
     return languageList;
@@ -376,48 +376,48 @@ public class GT {
     return getTextWrapper().doTranslate;
   }
 
-  public static String _(String string) {
+  public static String $(String string) {
     return getTextWrapper().getString(string);
   }
 
-  public static String _(String string, String item) {
+  public static String $(String string, String item) {
     return getTextWrapper().getString(string, new Object[] { item });
   }
 
-  public static String _(String string, int item) {
+  public static String $(String string, int item) {
     return getTextWrapper().getString(string,
         new Object[] { Integer.valueOf(item) });
   }
 
-  public static String _(String string, Object[] objects) {
+  public static String $(String string, Object[] objects) {
     return getTextWrapper().getString(string, objects);
   }
 
   //forced translations
   
-  public static String _(String string, boolean t) {
-    return _(string, (Object[]) null, t);
+  public static String $(String string, boolean t) {
+    return $(string, (Object[]) null, t);
   }
 
-  public static String _(String string,
+  public static String $(String string,
                          String item,
                          @SuppressWarnings("unused") boolean t) {
-    return _(string, new Object[] { item });
+    return $(string, new Object[] { item });
   }
 
-  public static String _(String string,
+  public static String $(String string,
                          int item,
                          @SuppressWarnings("unused") boolean t) {
-    return _(string, new Object[] { Integer.valueOf(item) });
+    return $(string, new Object[] { Integer.valueOf(item) });
   }
 
-  public static synchronized String _(String string,
+  public static synchronized String $(String string,
                                       Object[] objects,
                                       @SuppressWarnings("unused") boolean t) {
     boolean wasTranslating;
     if (!(wasTranslating = getTextWrapper().doTranslate))
       setDoTranslate(true);
-    String str = (objects == null ? _(string) : _(string, objects));
+    String str = (objects == null ? $(string) : $(string, objects));
     if (!wasTranslating)
       setDoTranslate(false);
     return str;

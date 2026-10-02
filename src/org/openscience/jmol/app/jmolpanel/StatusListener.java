@@ -43,8 +43,6 @@ import java.net.URI;
 import java.util.Map;
 import java.util.Properties;
 
-import jspecview.application.MainFrame;
-
 class StatusListener implements JmolStatusListener, JmolSyncInterface, JSVInterface {
 
   /*
@@ -71,7 +69,6 @@ class StatusListener implements JmolStatusListener, JmolSyncInterface, JSVInterf
   private DisplayPanel display;
 
   private JmolViewer viewer;
-  private MainFrame jSpecViewFrame;
   void setViewer(JmolViewer viewer) {
     this.viewer = viewer;
   }
@@ -351,29 +348,14 @@ class StatusListener implements JmolStatusListener, JmolSyncInterface, JSVInterf
     jmol.resizeInnerPanel(data);
   }
 
+  /**
+   * JSpecView is not bundled with RADMAP (it is not published to Maven
+   * Central), so spectrum synchronization is unavailable.
+   * 
+   * @param peaks 
+   */
   public void setJSpecView(String peaks) {
-    if (!display.isRotateMode())
-      return;
-    if (peaks.startsWith(":"))
-      peaks = peaks.substring(1);
-    if (jSpecViewFrame == null) {
-      jSpecViewFrame = new MainFrame((Component) viewer.getDisplay(), this);
-      jSpecViewFrame.setSize(800, 500);
-      jSpecViewFrame.setLocation(400, 400);
-      jSpecViewFrame.register("Jmol", this);
-      if (peaks.length() == 0) {
-        String s = "" + viewer.getParameter("_modelfile");
-        if (s.indexOf("/") >= 0)
-          peaks = "hidden false; load " + Escape.escape(s);
-      }
-    }
-    if (!jSpecViewFrame.isVisible() && !peaks.toLowerCase().startsWith("hidden")) {
-      jSpecViewFrame.awaken(true);
-      display.setViewer(viewer);
-    }
-    if (peaks.length() == 0)
-      peaks = "HIDDEN false";
-    jSpecViewFrame.syncScript(peaks);
+    Logger.warn("JSpecView is not available in this build");
   }
 
   public void register(String id, JmolSyncInterface jsi) {
@@ -422,8 +404,7 @@ class StatusListener implements JmolStatusListener, JmolSyncInterface, JSVInterf
    * @param script 
    */
   public void runScript(String script) {
-    jSpecViewFrame.runScriptNow(script);
-    
+    // JSpecView is not available in this build
   }
 
   /**
@@ -434,12 +415,6 @@ class StatusListener implements JmolStatusListener, JmolSyncInterface, JSVInterf
   }
 
   public Map<String, Object> getProperty(String type) {
-    if (type.toLowerCase().startsWith("jspecview")) {
-      type = type.substring(9);
-      if (type.startsWith(":"))
-          type = type.substring(1);
-      return (jSpecViewFrame == null ? null : jSpecViewFrame.getProperty(type));
-    }
     return null;
   }
   

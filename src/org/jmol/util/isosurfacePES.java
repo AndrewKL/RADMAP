@@ -251,12 +251,13 @@ public class isosurfacePES {
     
     if(DEBUG)System.out.println("isosurfacePES errornumber:  "+errornumber);
     
-    theViewer.script("isosurface resolution "+calcresolution+" molecular dots mesh nofill");
-    
+    //the write comes first: script() only queues its command, and the two must not run at once
     String writeCommand = "write \""+folderLocation+"\\"+moleculename+".mol\"";
     writeCommand = writeCommand.replace("\\", "/");
     if(DEBUG)System.out.println(writeCommand);
     theViewer.runScriptImmediately(writeCommand);
+    
+    theViewer.script("isosurface resolution "+calcresolution+" molecular dots mesh nofill");
 
     return;
     
@@ -266,7 +267,55 @@ public class isosurfacePES {
 
   
 
+  public static Mesh findMesh(Viewer theViewer){
+    //the last mesh of the last mesh collection, as used throughout this class
+    Shape[] shapes = theViewer.getShapeManager().getShapes();
+    Mesh theMesh = null;
+    for(int i=0;i<shapes.length;i++){
+      if(shapes[i] instanceof MeshCollection){
+        MeshCollection themeshcollection = (MeshCollection) shapes[i];
+        for(int j=0;j<themeshcollection.meshes.length;j++){
+          if(themeshcollection.meshes[j]!=null){
+            theMesh=themeshcollection.meshes[j];
+          }
+        }
+      }
+    }
+    return theMesh;
+  }
+  
+  public static int generatePsi4files(Viewer theViewer, int charge,
+                                       int multiplicity,float calcresolution,float probeRadius, String fragment, String folderLocation, String moleculename, String memory, int threads, String method, String basis, String options, boolean withForces) {
+    //Psi4 counterpart of generateIsosurfacePESfiles. returns the number of input files written or -1
+    
+    if(probeRadius<=0)probeRadius=(float)1.2;
+    theViewer.runScriptImmediately("isosurface delete"); //clears any leftover isosurfaces
+    theViewer.runScriptImmediately("isosurface resolution "+calcresolution+" solvent "+probeRadius+" dots mesh nofill");
+    
+    moleculename = moleculename.replaceAll(" ", "");
+    
+    Mesh theMesh = findMesh(theViewer);
+    if(DEBUG){System.out.println("current themesh value:  "+theMesh);}
+    if(theMesh==null||theMesh.vertices==null){return -1;}
+    
+    int count = Psi4Engine.generateFiles(theMesh, folderLocation, memory, threads, method, basis, options,
+        charge, multiplicity, generateGaussianMoleculeSpecification(theViewer), fragment, withForces);
+    
+    if(DEBUG)System.out.println("isosurfacePES Psi4 input files written:  "+count);
+    
+    //the write comes first: script() only queues its command, and the two must not run at once
+    String writeCommand = "write \""+folderLocation+"\\"+moleculename+".mol\"";
+    writeCommand = writeCommand.replace("\\", "/");
+    theViewer.runScriptImmediately(writeCommand);
+    
+    theViewer.script("isosurface resolution "+calcresolution+" molecular dots mesh nofill");
+    
+    return count;
+  }
+  
   public static DataVertex loadGaussianOutFile(String path){
+    if (Psi4Engine.isPsi4Output(path))
+      return Psi4Engine.readEnergy(path);
     float x = 0;
     float y = 0;
     float z = 0;

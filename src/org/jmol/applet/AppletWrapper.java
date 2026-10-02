@@ -97,7 +97,7 @@ public class AppletWrapper extends Applet {
     GT.ignoreApplicationBundle();
     this.wrappedAppletClassName = wrappedAppletClassName;
     this.preloadImageName = preloadImageName;
-    this.preloadTextMessage = GT._("Loading Jmol applet ...");
+    this.preloadTextMessage = GT.$("Loading Jmol applet ...");
     this.preloadThreadCount = preloadThreadCount;
     this.preloadClassNames = preloadClassNames;
     needToCompleteInitialization = true;
@@ -172,7 +172,7 @@ public class AppletWrapper extends Applet {
       g.setFont(font);
       g.drawString(preloadTextMessage, 10, messageBaseline);
       
-      String clockText = GT._("  {0} seconds", new Object[] { new Long(elapsedTime) });
+      String clockText = GT.$("  {0} seconds", new Object[] { new Long(elapsedTime) });
       clockWidth = fontMetrics.stringWidth(clockText);
       clockX = dim.width - clockWidth - 5;
       if (clockX < 0)

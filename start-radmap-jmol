@@ -1,0 +1,16 @@
+#!/bin/sh
+# Starts RADMAP (Jmol), building the jar first if it is missing.
+# Any arguments are passed through to Jmol.
+
+cd "$(dirname "$0")" || exit 1
+dir=$(pwd)
+cd "$OLDPWD" || exit 1
+
+jar=$(ls "$dir"/target/radmap-*-all.jar 2>/dev/null | head -n 1)
+if [ -z "$jar" ]; then
+  echo "RADMAP jar not found; building..." >&2
+  (cd "$dir" && mvn -q package) || exit 1
+  jar=$(ls "$dir"/target/radmap-*-all.jar | head -n 1)
+fi
+
+exec java -jar "$jar" "$@"

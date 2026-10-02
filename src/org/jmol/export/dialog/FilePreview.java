@@ -68,7 +68,7 @@ public class FilePreview extends JPanel implements PropertyChangeListener {
     Box box = Box.createVerticalBox();
 
     // Add a checkbox to activate / deactivate preview
-    active = new JCheckBox(GT._("Preview"), false);
+    active = new JCheckBox(GT.$("Preview"), false);
     active.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         if (active.isSelected()) {
@@ -88,7 +88,7 @@ public class FilePreview extends JPanel implements PropertyChangeListener {
 
     if (allowAppend) {
       // Add a checkbox to append date
-      append = new JCheckBox(GT._("Append models"), false);
+      append = new JCheckBox(GT.$("Append models"), false);
       box.add(append);
     }
 

@@ -2649,7 +2649,7 @@ public class ScriptEvaluator {
     error = true;
     if (errorMessage == null) // there could be a compiler error from a script
       // command
-      errorMessage = GT._("script ERROR: ");
+      errorMessage = GT.$("script ERROR: ");
     errorMessage += err;
   }
 
@@ -2798,178 +2798,178 @@ public class ScriptEvaluator {
       msg = "Unknown error message number: " + iError;
       break;
     case ERROR_axisExpected:
-      msg = GT._("x y z axis expected");
+      msg = GT.$("x y z axis expected");
       break;
     case ERROR_backgroundModelError:
-      msg = GT._("{0} not allowed with background model displayed");
+      msg = GT.$("{0} not allowed with background model displayed");
       break;
     case ERROR_badArgumentCount:
-      msg = GT._("bad argument count");
+      msg = GT.$("bad argument count");
       break;
     case ERROR_badMillerIndices:
-      msg = GT._("Miller indices cannot all be zero.");
+      msg = GT.$("Miller indices cannot all be zero.");
       break;
     case ERROR_badRGBColor:
-      msg = GT._("bad [R,G,B] color");
+      msg = GT.$("bad [R,G,B] color");
       break;
     case ERROR_booleanExpected:
-      msg = GT._("boolean expected");
+      msg = GT.$("boolean expected");
       break;
     case ERROR_booleanOrNumberExpected:
-      msg = GT._("boolean or number expected");
+      msg = GT.$("boolean or number expected");
       break;
     case ERROR_booleanOrWhateverExpected:
-      msg = GT._("boolean, number, or {0} expected");
+      msg = GT.$("boolean, number, or {0} expected");
       break;
     case ERROR_cannotSet:
-      msg = GT._("cannot set value");
+      msg = GT.$("cannot set value");
       break;
     case ERROR_colorExpected:
-      msg = GT._("color expected");
+      msg = GT.$("color expected");
       break;
     case ERROR_colorOrPaletteRequired:
-      msg = GT._("a color or palette name (Jmol, Rasmol) is required");
+      msg = GT.$("a color or palette name (Jmol, Rasmol) is required");
       break;
     case ERROR_commandExpected:
-      msg = GT._("command expected");
+      msg = GT.$("command expected");
       break;
     case ERROR_coordinateOrNameOrExpressionRequired:
-      msg = GT._("{x y z} or $name or (atom expression) required");
+      msg = GT.$("{x y z} or $name or (atom expression) required");
       break;
     case ERROR_drawObjectNotDefined:
-      msg = GT._("draw object not defined");
+      msg = GT.$("draw object not defined");
       break;
     case ERROR_endOfStatementUnexpected:
-      msg = GT._("unexpected end of script command");
+      msg = GT.$("unexpected end of script command");
       break;
     case ERROR_expressionExpected:
-      msg = GT._("valid (atom expression) expected");
+      msg = GT.$("valid (atom expression) expected");
       break;
     case ERROR_expressionOrIntegerExpected:
-      msg = GT._("(atom expression) or integer expected");
+      msg = GT.$("(atom expression) or integer expected");
       break;
     case ERROR_filenameExpected:
-      msg = GT._("filename expected");
+      msg = GT.$("filename expected");
       break;
     case ERROR_fileNotFoundException:
-      msg = GT._("file not found");
+      msg = GT.$("file not found");
       break;
     case ERROR_incompatibleArguments:
-      msg = GT._("incompatible arguments");
+      msg = GT.$("incompatible arguments");
       break;
     case ERROR_insufficientArguments:
-      msg = GT._("insufficient arguments");
+      msg = GT.$("insufficient arguments");
       break;
     case ERROR_integerExpected:
-      msg = GT._("integer expected");
+      msg = GT.$("integer expected");
       break;
     case ERROR_integerOutOfRange:
-      msg = GT._("integer out of range ({0} - {1})");
+      msg = GT.$("integer out of range ({0} - {1})");
       break;
     case ERROR_invalidArgument:
-      msg = GT._("invalid argument");
+      msg = GT.$("invalid argument");
       break;
     case ERROR_invalidParameterOrder:
-      msg = GT._("invalid parameter order");
+      msg = GT.$("invalid parameter order");
       break;
     case ERROR_keywordExpected:
-      msg = GT._("keyword expected");
+      msg = GT.$("keyword expected");
       break;
     case ERROR_moCoefficients:
-      msg = GT._("no MO coefficient data available");
+      msg = GT.$("no MO coefficient data available");
       break;
     case ERROR_moIndex:
-      msg = GT._("An MO index from 1 to {0} is required");
+      msg = GT.$("An MO index from 1 to {0} is required");
       break;
     case ERROR_moModelError:
-      msg = GT._("no MO basis/coefficient data available for this frame");
+      msg = GT.$("no MO basis/coefficient data available for this frame");
       break;
     case ERROR_moOccupancy:
-      msg = GT._("no MO occupancy data available");
+      msg = GT.$("no MO occupancy data available");
       break;
     case ERROR_moOnlyOne:
-      msg = GT._("Only one molecular orbital is available in this file");
+      msg = GT.$("Only one molecular orbital is available in this file");
       break;
     case ERROR_multipleModelsDisplayedNotOK:
-      msg = GT._("{0} require that only one model be displayed");
+      msg = GT.$("{0} require that only one model be displayed");
       break;
     case ERROR_multipleModelsNotOK:
-      msg = GT._("{0} requires that only one model be loaded");
+      msg = GT.$("{0} requires that only one model be loaded");
       break;
     case ERROR_noData:
-      msg = GT._("No data available");
+      msg = GT.$("No data available");
       break;
     case ERROR_noPartialCharges:
       msg = GT
-          ._("No partial charges were read from the file; Jmol needs these to render the MEP data.");
+          .$("No partial charges were read from the file; Jmol needs these to render the MEP data.");
       break;
     case ERROR_noUnitCell:
-      msg = GT._("No unit cell");
+      msg = GT.$("No unit cell");
       break;
     case ERROR_numberExpected:
-      msg = GT._("number expected");
+      msg = GT.$("number expected");
       break;
     case ERROR_numberMustBe:
-      msg = GT._("number must be ({0} or {1})");
+      msg = GT.$("number must be ({0} or {1})");
       break;
     case ERROR_numberOutOfRange:
-      msg = GT._("decimal number out of range ({0} - {1})");
+      msg = GT.$("decimal number out of range ({0} - {1})");
       break;
     case ERROR_objectNameExpected:
-      msg = GT._("object name expected after '$'");
+      msg = GT.$("object name expected after '$'");
       break;
     case ERROR_planeExpected:
       msg = GT
-          ._("plane expected -- either three points or atom expressions or {0} or {1} or {2}");
+          .$("plane expected -- either three points or atom expressions or {0} or {1} or {2}");
       break;
     case ERROR_propertyNameExpected:
-      msg = GT._("property name expected");
+      msg = GT.$("property name expected");
       break;
     case ERROR_spaceGroupNotFound:
-      msg = GT._("space group {0} was not found.");
+      msg = GT.$("space group {0} was not found.");
       break;
     case ERROR_stringExpected:
-      msg = GT._("quoted string expected");
+      msg = GT.$("quoted string expected");
       break;
     case ERROR_stringOrIdentifierExpected:
-      msg = GT._("quoted string or identifier expected");
+      msg = GT.$("quoted string or identifier expected");
       break;
     case ERROR_tooManyPoints:
-      msg = GT._("too many rotation points were specified");
+      msg = GT.$("too many rotation points were specified");
       break;
     case ERROR_tooManyScriptLevels:
-      msg = GT._("too many script levels");
+      msg = GT.$("too many script levels");
       break;
     case ERROR_unrecognizedAtomProperty:
-      msg = GT._("unrecognized atom property");
+      msg = GT.$("unrecognized atom property");
       break;
     case ERROR_unrecognizedBondProperty:
-      msg = GT._("unrecognized bond property");
+      msg = GT.$("unrecognized bond property");
       break;
     case ERROR_unrecognizedCommand:
-      msg = GT._("unrecognized command");
+      msg = GT.$("unrecognized command");
       break;
     case ERROR_unrecognizedExpression:
-      msg = GT._("runtime unrecognized expression");
+      msg = GT.$("runtime unrecognized expression");
       break;
     case ERROR_unrecognizedObject:
-      msg = GT._("unrecognized object");
+      msg = GT.$("unrecognized object");
       break;
     case ERROR_unrecognizedParameter:
-      msg = GT._("unrecognized {0} parameter");
+      msg = GT.$("unrecognized {0} parameter");
       break;
     case ERROR_unrecognizedParameterWarning:
       msg = GT
-          ._("unrecognized {0} parameter in Jmol state script (set anyway)");
+          .$("unrecognized {0} parameter in Jmol state script (set anyway)");
       break;
     case ERROR_unrecognizedShowParameter:
-      msg = GT._("unrecognized SHOW parameter --  use {0}");
+      msg = GT.$("unrecognized SHOW parameter --  use {0}");
       break;
     case ERROR_what:
       msg = "{0}";
       break;
     case ERROR_writeWhat:
-      msg = GT._("write what? {0} or {1} \"filename\"");
+      msg = GT.$("write what? {0} or {1} \"filename\"");
       break;
     }
     if (msg.indexOf("{0}") < 0) {
@@ -7403,7 +7403,7 @@ public class ScriptEvaluator {
     }
     if (isDelete) {
       if (!(tQuiet || scriptLevel > scriptReportingLevel))
-        scriptStatusOrBuffer(GT._("{0} connections deleted", nModified));
+        scriptStatusOrBuffer(GT.$("{0} connections deleted", nModified));
       return;
     }
     if (isColorOrRadius) {
@@ -7424,7 +7424,7 @@ public class ScriptEvaluator {
       viewer.selectBonds(null);
     }
     if (!(tQuiet || scriptLevel > scriptReportingLevel))
-      scriptStatusOrBuffer(GT._("{0} new bonds; {1} modified", new Object[] {
+      scriptStatusOrBuffer(GT.$("{0} new bonds; {1} modified", new Object[] {
           Integer.valueOf(nNew), Integer.valueOf(nModified) }));
   }
 
@@ -8935,7 +8935,7 @@ public class ScriptEvaluator {
     if (os != null)
       try {
         viewer.setFileInfo(new String[] { localName, localName, localName });
-        Logger.info(GT._("file {0} created", localName));
+        Logger.info(GT.$("file {0} created", localName));
         showString(viewer.getFilePath(localName, false) + " created");
         os.close();
       } catch (IOException e) {
@@ -10343,7 +10343,7 @@ public class ScriptEvaluator {
       isCmdLine_C_Option = saveLoadCheck;
       popContext(false, false);
     } else {
-      Logger.error(GT._("script ERROR: ") + errorMessage);
+      Logger.error(GT.$("script ERROR: ") + errorMessage);
       popContext(false, false);
       if (wasScriptCheck) {
         setErrorMessage(null);
@@ -10499,7 +10499,7 @@ public class ScriptEvaluator {
       return;
     int nDeleted = viewer.deleteAtoms(bs, false);
     if (!(tQuiet || scriptLevel > scriptReportingLevel))
-      scriptStatusOrBuffer(GT._("{0} atoms deleted", nDeleted));
+      scriptStatusOrBuffer(GT.$("{0} atoms deleted", nDeleted));
   }
 
   private void minimize() throws ScriptException {
@@ -10765,7 +10765,7 @@ public class ScriptEvaluator {
     int nDeleted = viewer.deleteAtoms(bs, true);
     boolean isQuiet = (tQuiet || scriptLevel > scriptReportingLevel);
     if (!isQuiet)
-      scriptStatusOrBuffer(GT._("{0} atoms deleted", nDeleted));
+      scriptStatusOrBuffer(GT.$("{0} atoms deleted", nDeleted));
     viewer.select(null, false, null, isQuiet);
   }
 
@@ -11412,7 +11412,7 @@ public class ScriptEvaluator {
       if (isSyntaxCheck)
         return;
       int n = viewer.autoHbond(null, null, false);
-      scriptStatusOrBuffer(GT._("{0} hydrogen bonds", Math.abs(n)));
+      scriptStatusOrBuffer(GT.$("{0} hydrogen bonds", Math.abs(n)));
       return;
     }
     if (statementLength == 2 && getToken(1).tok == Token.delete) {
@@ -11783,7 +11783,7 @@ public class ScriptEvaluator {
           if (n > 0)
             colorShape(JmolConstants.SHAPE_STRUTS, JmolEdge.BOND_STRUT,
                 0x0FFFFFF, "translucent", 0.5f, null);
-          showString(GT._("{0} struts added", n));
+          showString(GT.$("{0} struts added", n));
         }
         return;
       case Token.surface:
@@ -11829,7 +11829,7 @@ public class ScriptEvaluator {
         return;
       }
       if (n != Integer.MIN_VALUE) {
-        scriptStatusOrBuffer(GT._("{0} hydrogen bonds", Math.abs(n)));
+        scriptStatusOrBuffer(GT.$("{0} hydrogen bonds", Math.abs(n)));
         return;
       }
     }
@@ -14044,7 +14044,7 @@ public class ScriptEvaluator {
         if (isSyntaxCheck)
           return "";
         // if (isApplet)
-        // evalError(GT._("The {0} command is not available for the applet.",
+        // evalError(GT.$("The {0} command is not available for the applet.",
         // "WRITE CLIPBOARD"));
       } else if (Parser.isOneOf(val.toLowerCase(), "png;pngj;pngt;jpg;jpeg;jpg64;jpeg64")
           && tokAt(pt + 1, args) == Token.integer) {
@@ -15815,7 +15815,7 @@ public class ScriptEvaluator {
       int nModels = viewer.getModelBitSet(bs, false).cardinality();
       withinAllModels = (nModels > 1);
       if (warnMultiModel && nModels > 1 && !tQuiet)
-        showString(GT._("Note: More than one model is involved in this contact!"));
+        showString(GT.$("Note: More than one model is involved in this contact!"));
     }
     // B always within some possibly extended VDW of A or just A itself
     if (!bsA.equals(bsB)) {

@@ -92,7 +92,7 @@ class SelectionManager {
     if (modelSet != null)
       modelSet.setBsHidden(bsHidden);
     if (!isQuiet)
-      viewer.reportSelection(GT._("{0} atoms hidden", ""
+      viewer.reportSelection(GT.$("{0} atoms hidden", ""
           + bsHidden.cardinality()));
   }
 
@@ -112,7 +112,7 @@ class SelectionManager {
     if (modelSet != null)
       modelSet.setBsHidden(bsHidden);
     if (!isQuiet)
-      viewer.reportSelection(GT._("{0} atoms hidden", ""
+      viewer.reportSelection(GT.$("{0} atoms hidden", ""
           + bsHidden.cardinality()));
   }
 
@@ -154,7 +154,7 @@ class SelectionManager {
           + " atoms")
           + " selected!");
     else if (!isQuiet)
-      viewer.reportSelection(GT._("{0} atoms selected", n));
+      viewer.reportSelection(GT.$("{0} atoms selected", n));
   }
 
   void selectAll(boolean isQuiet) {

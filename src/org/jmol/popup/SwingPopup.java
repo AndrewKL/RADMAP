@@ -470,7 +470,7 @@ abstract public class SwingPopup extends GenericPopup {
   protected String setCheckBoxOption(Object item, String name, String what) {
     if (isModelKit) {
       // atom type
-      String element = JOptionPane.showInputDialog(GT._("Element?"), "");
+      String element = JOptionPane.showInputDialog(GT.$("Element?"), "");
       if (element == null
           || Elements.elementNumberFromSymbol(element, true) == 0)
         return null;

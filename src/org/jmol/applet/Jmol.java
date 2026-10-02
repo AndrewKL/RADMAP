@@ -216,7 +216,7 @@ public class Jmol implements WrappedApplet {
   /*
    * see below public String getAppletInfo() { return appletInfo; }
    * 
-   * static String appletInfo = GT._("Jmol Applet. Part of the OpenScience
+   * static String appletInfo = GT.$("Jmol Applet. Part of the OpenScience
    * project. " + "See http://www.jmol.org for more information");
    */
   public void setAppletWrapper(AppletWrapper appletWrapper) {
@@ -304,7 +304,7 @@ public class Jmol implements WrappedApplet {
       JSObject jsoWindow = null;
       JSObject jsoDocument = null;
       try {
-        jsoWindow = JSObject.getWindow(appletWrapper);
+        jsoWindow = JmolAppletRegistry.getWindow(appletWrapper);
         if (Logger.debugging) {
           Logger.debug("jsoWindow=" + jsoWindow);
         }
@@ -495,7 +495,7 @@ public class Jmol implements WrappedApplet {
     if (!haveDocumentAccess || statusForm == null || statusText == null)
       return;
     try {
-      JSObject jsoWindow = JSObject.getWindow(appletWrapper);
+      JSObject jsoWindow = JmolAppletRegistry.getWindow(appletWrapper);
       JSObject jsoDocument = (JSObject) jsoWindow.getMember("document");
       JSObject jsoForm = (JSObject) jsoDocument.getMember(statusForm);
       if (statusText != null) {
@@ -512,7 +512,7 @@ public class Jmol implements WrappedApplet {
     if (!haveDocumentAccess || statusForm == null || statusTextarea == null)
       return;
     try {
-      JSObject jsoWindow = JSObject.getWindow(appletWrapper);
+      JSObject jsoWindow = JmolAppletRegistry.getWindow(appletWrapper);
       JSObject jsoDocument = (JSObject) jsoWindow.getMember("document");
       JSObject jsoForm = (JSObject) jsoDocument.getMember(statusForm);
       if (statusTextarea != null) {
@@ -699,7 +699,7 @@ public class Jmol implements WrappedApplet {
 
   public String getAppletInfo() {
     return GT
-        ._(
+        .$(
             "Jmol Applet version {0} {1}.\n\nAn OpenScience project.\n\nSee http://www.jmol.org for more information",
             new Object[] { JmolConstants.version, JmolConstants.date })
         + "\nhtmlName = "
@@ -822,7 +822,7 @@ public class Jmol implements WrappedApplet {
     Object[] idArgs = { nodeId };
     JSObject tryNode = null;
     try {
-      JSObject jsoWindow = JSObject.getWindow(appletWrapper);
+      JSObject jsoWindow = JmolAppletRegistry.getWindow(appletWrapper);
       JSObject jsoDocument = (JSObject) jsoWindow.getMember("document");
       tryNode = (JSObject) jsoDocument.call("getElementById", idArgs);
 
@@ -965,7 +965,7 @@ public class Jmol implements WrappedApplet {
         String errorMsg = (String) data[4];
         if (errorMsg != null) {
           errorMsg = (errorMsg.indexOf("NOTE:") >= 0 ? "" : GT
-              ._("File Error:")) + errorMsg;
+              .$("File Error:")) + errorMsg;
           showStatus(errorMsg);
           notifyCallback(EnumCallback.MESSAGE, new Object[] { "", errorMsg });
           return;
@@ -1026,7 +1026,7 @@ public class Jmol implements WrappedApplet {
       if (!doCallback || !mayScript)
         return;
       try {
-        JSObject jso = JSObject.getWindow(appletWrapper);
+        JSObject jso = JmolAppletRegistry.getWindow(appletWrapper);
         if (callback.equals("alert")) {
           jso.call(callback, new Object[] { strInfo });
         } else if (callback.length() > 0) {
@@ -1062,7 +1062,7 @@ public class Jmol implements WrappedApplet {
       if (!mayScript || syncCallback == null)
         return info;
       try {
-        JSObject jsoWindow = JSObject.getWindow(appletWrapper);
+        JSObject jsoWindow = JmolAppletRegistry.getWindow(appletWrapper);
         if (syncCallback.length() > 0)
           return "" + jsoWindow.call(syncCallback, new Object[] { htmlName,
               info, appletName });
@@ -1108,7 +1108,7 @@ public class Jmol implements WrappedApplet {
       JSObject jsoWindow = null;
       JSObject jsoDocument = null;
       try {
-        jsoWindow = JSObject.getWindow(appletWrapper);
+        jsoWindow = JmolAppletRegistry.getWindow(appletWrapper);
         jsoDocument = (JSObject) jsoWindow.getMember("document");
       } catch (Exception e) {
         if (Logger.debugging)
@@ -1166,7 +1166,7 @@ public class Jmol implements WrappedApplet {
       if (!mayScript || nX == 0 || nY == 0)
         return fxy;
       try {
-        JSObject jsoWindow = JSObject.getWindow(appletWrapper);
+        JSObject jsoWindow = JmolAppletRegistry.getWindow(appletWrapper);
         if (nX > 0 && nY > 0) { // fill with individual function calls (slow)
           for (int i = 0; i < nX; i++)
             for (int j = 0; j < nY; j++) {
@@ -1204,7 +1204,7 @@ public class Jmol implements WrappedApplet {
       if (!mayScript || nX == 0 || nY == 0 || nZ == 0)
         return fxyz;
       try {
-        JSObject jsoWindow = JSObject.getWindow(appletWrapper);
+        JSObject jsoWindow = JmolAppletRegistry.getWindow(appletWrapper);
        jsoWindow.call(functionName, new Object[] { htmlName,
               Integer.valueOf(nX), Integer.valueOf(nY), Integer.valueOf(nZ), fxyz }); 
       } catch (Exception e) {

@@ -24,6 +24,10 @@ public class DEDXSurfaceUtils {
   
   
   public static DataVertex readFlexDataFromGaussianOutFile(String path, float vectorParamA, float vectorParamC){
+    if (Psi4Engine.isPsi4Output(path)) {
+      Psi4Engine.Forces psi4 = Psi4Engine.readForces(path);
+      return (psi4 == null ? null : new DataVertex(psi4.probe, flexWeight(psi4.locations, psi4.forces)));
+    }
     float x = 0;
     float y = 0;
     float z = 0;
@@ -155,44 +159,8 @@ public class DEDXSurfaceUtils {
         * to each other
         */
        
-       float numerator = 0;
-       float denominator =0;
-       
-       float a = 2;
-       float c= (float) 0.5;
-       float bondlength = (float)1.0;
-       
-       if(DEBUG)System.out.println("calculating vector data");
-       for(int i =0;i<atomlocation.length-1;i++){
-         for(int j =i+1;j<atomlocation.length;j++){
-           //if(DEBUG)System.out.println("Comparing atom "+i+" with atom "+j);
-           
-           Point3f distancevector= Point3fVecMath.sub(atomlocation[i],atomlocation[j]);
-           Point3f totalDEDX = Point3fVecMath.sub(atomderivatives[i],atomderivatives[j]);
-           Point3f projectedDEDX = Point3fVecMath.project(totalDEDX, distancevector);
-           Point3f antiprojectedDEDX = Point3fVecMath.sub(totalDEDX, projectedDEDX);
-           
-           
-           float distance = atomlocation[i].distance(atomlocation[j]);
-           float distanceweight = a * (float)Math.exp(-(distance*distance-bondlength)/2/c/c);
-           numerator += distanceweight*Point3fVecMath.abslength(antiprojectedDEDX);
-           denominator += distanceweight;
-           
-           //if(DEBUG)System.out.println("distance vector: "+distancevector);
-           //if(DEBUG)System.out.println("DE i vector: "+atomderivatives[i]);
-           //if(DEBUG)System.out.println("DE j vector: "+atomderivatives[j]);
-           //if(DEBUG)System.out.println("DE total vector: "+totalDEDX);
-           //if(DEBUG)System.out.println("projected DE vector: "+projectedDEDX);
-           //if(DEBUG)System.out.println("antiprojDE vec: "+i+" "+j+" "+antiprojectedDEDX+
-           //    "  length: "+Point3fVecMath.length(antiprojectedDEDX));
-           
-           
-           //if(DEBUG)System.out.println("distance vector: "+distancevector);
-           //if(DEBUG)System.out.println("distance vector length: "+Point3fVecMath.length(distancevector));
-           
-         }
-       }
-       flexweight = numerator/denominator;
+       flexweight = flexWeight(atomlocation, atomderivatives);
+
        
        
        
@@ -447,7 +415,61 @@ public class DEDXSurfaceUtils {
   }
   
   
+  public static float flexWeight(Point3f[] atomlocation, Point3f[] atomderivatives){
+     float numerator = 0;
+     float denominator =0;
+     
+     float a = 2;
+     float c= (float) 0.5;
+     float bondlength = (float)1.0;
+     
+     if(DEBUG)System.out.println("calculating vector data");
+     for(int i =0;i<atomlocation.length-1;i++){
+       for(int j =i+1;j<atomlocation.length;j++){
+         //if(DEBUG)System.out.println("Comparing atom "+i+" with atom "+j);
+         
+         Point3f distancevector= Point3fVecMath.sub(atomlocation[i],atomlocation[j]);
+         Point3f totalDEDX = Point3fVecMath.sub(atomderivatives[i],atomderivatives[j]);
+         Point3f projectedDEDX = Point3fVecMath.project(totalDEDX, distancevector);
+         Point3f antiprojectedDEDX = Point3fVecMath.sub(totalDEDX, projectedDEDX);
+         
+         
+         float distance = atomlocation[i].distance(atomlocation[j]);
+         float distanceweight = a * (float)Math.exp(-(distance*distance-bondlength)/2/c/c);
+         numerator += distanceweight*Point3fVecMath.abslength(antiprojectedDEDX);
+         denominator += distanceweight;
+         
+         //if(DEBUG)System.out.println("distance vector: "+distancevector);
+         //if(DEBUG)System.out.println("DE i vector: "+atomderivatives[i]);
+         //if(DEBUG)System.out.println("DE j vector: "+atomderivatives[j]);
+         //if(DEBUG)System.out.println("DE total vector: "+totalDEDX);
+         //if(DEBUG)System.out.println("projected DE vector: "+projectedDEDX);
+         //if(DEBUG)System.out.println("antiprojDE vec: "+i+" "+j+" "+antiprojectedDEDX+
+         //    "  length: "+Point3fVecMath.length(antiprojectedDEDX));
+         
+         
+         //if(DEBUG)System.out.println("distance vector: "+distancevector);
+         //if(DEBUG)System.out.println("distance vector length: "+Point3fVecMath.length(distancevector));
+         
+       }
+     }
+     return numerator/denominator;
+  }
+  
+  public static float totalDEDX(Point3f[] atomderivatives){
+    //note: the last atom (the probe) is not included
+    float totalDEDX = 0;
+    for(int i =0;i<atomderivatives.length-1;i++){
+      totalDEDX +=Point3fVecMath.length(atomderivatives[i]);
+    }
+    return totalDEDX;
+  }
+  
   public static DataVertex readTotalDEDXDataFromGaussianOutFile(String path){
+    if (Psi4Engine.isPsi4Output(path)) {
+      Psi4Engine.Forces psi4 = Psi4Engine.readForces(path);
+      return (psi4 == null ? null : new DataVertex(psi4.probe, totalDEDX(psi4.forces)));
+    }
     float x = 0;
     float y = 0;
     float z = 0;
@@ -581,11 +603,7 @@ public class DEDXSurfaceUtils {
        
        
        if(DEBUG)System.out.println("calculating DEDX vector data");
-       for(int i =0;i<atomlocation.length-1;i++){
-         //if(DEBUG)System.out.println("DEDX of atom: "+atomderivatives[i]);
-         totalDEDX +=Point3fVecMath.length(atomderivatives[i]);
-
-       }
+       totalDEDX = totalDEDX(atomderivatives);
     
      }
     

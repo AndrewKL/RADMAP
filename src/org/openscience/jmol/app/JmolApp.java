@@ -106,7 +106,7 @@ public class JmolApp {
     }
     if (System.getProperty("user.home") == null) {
       System.err.println(GT
-          ._("Error starting Jmol: the property 'user.home' is not defined."));
+          .$("Error starting Jmol: the property 'user.home' is not defined."));
       System.exit(1);
     }
     File ujmoldir = new File(new File(System.getProperty("user.home")), ".jmol");
@@ -143,60 +143,60 @@ public class JmolApp {
   private Options getOptions() {
     Options options = new Options();
     options.addOption("b", "backgroundtransparent", false, GT
-        ._("transparent background"));
-    options.addOption("h", "help", false, GT._("give this help page"));
+        .$("transparent background"));
+    options.addOption("h", "help", false, GT.$("give this help page"));
     options.addOption("n", "nodisplay", false, GT
-        ._("no display (and also exit when done)"));
+        .$("no display (and also exit when done)"));
     options.addOption("c", "check", false, GT
-        ._("check script syntax only - no file loading"));
+        .$("check script syntax only - no file loading"));
     options.addOption("C", "checkload", false, GT
-        ._("check script syntax only - with file loading"));
-    options.addOption("d", "debug", false, GT._("debug"));
-    options.addOption("i", "silent", false, GT._("silent startup operation"));
+        .$("check script syntax only - with file loading"));
+    options.addOption("d", "debug", false, GT.$("debug"));
+    options.addOption("i", "silent", false, GT.$("silent startup operation"));
     options.addOption("k", "kiosk", false, GT
-        ._("kiosk mode -- no frame"));
+        .$("kiosk mode -- no frame"));
     options.addOption("l", "list", false, GT
-        ._("list commands during script execution"));
+        .$("list commands during script execution"));
     options.addOption("L", "nosplash", false, GT
-        ._("start with no splash screen"));
+        .$("start with no splash screen"));
     options.addOption("o", "noconsole", false, GT
-        ._("no console -- all output to sysout"));
+        .$("no console -- all output to sysout"));
     options.addOption("p", "printOnly", false, GT
-        ._("send only output from print messages to console (implies -i)"));
+        .$("send only output from print messages to console (implies -i)"));
     options.addOption("R", "restricted", false, GT
-        ._("restrict local file access"));
+        .$("restrict local file access"));
     options.addOption("t", "threaded", false, GT
-        ._("independent command thread"));
+        .$("independent command thread"));
     options.addOption("x", "exit", false, GT
-        ._("exit after script (implicit with -n)"));
+        .$("exit after script (implicit with -n)"));
 
     OptionBuilder.withLongOpt("port");
-    OptionBuilder.withDescription(GT._("port for JSON/MolecularPlayground-style communication"));
+    OptionBuilder.withDescription(GT.$("port for JSON/MolecularPlayground-style communication"));
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("P"));
     
     OptionBuilder.withLongOpt("script");
     OptionBuilder.withDescription(GT
-        ._("script file to execute or '-' for System.in"));
+        .$("script file to execute or '-' for System.in"));
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("s"));
 
     OptionBuilder.withLongOpt("multitouch");
     OptionBuilder.withDescription(GT
-        ._("use multitouch interface (requires \"sparshui\" parameter"));
+        .$("use multitouch interface (requires \"sparshui\" parameter"));
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("M"));
 
 
     OptionBuilder.withLongOpt("jmolscript1");
     OptionBuilder.withDescription(GT
-        ._("Jmol script to execute BEFORE -s option"));
+        .$("Jmol script to execute BEFORE -s option"));
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("J"));
 
     OptionBuilder.withLongOpt("jmolscript2");
     OptionBuilder.withDescription(GT
-        ._("Jmol script to execute AFTER -s option"));
+        .$("Jmol script to execute AFTER -s option"));
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("j"));
 
@@ -210,31 +210,31 @@ public class JmolApp {
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("T"));
 
-    OptionBuilder.withArgName(GT._("property=value"));
+    OptionBuilder.withArgName(GT.$("property=value"));
     OptionBuilder.hasArg();
     OptionBuilder.withValueSeparator();
-    OptionBuilder.withDescription(GT._("supported options are given below"));
+    OptionBuilder.withDescription(GT.$("supported options are given below"));
     options.addOption(OptionBuilder.create("D"));
 
     OptionBuilder.withLongOpt("geometry");
-    // OptionBuilder.withDescription(GT._("overall window width x height, e.g. {0}",
+    // OptionBuilder.withDescription(GT.$("overall window width x height, e.g. {0}",
     // "-g512x616"));
-    OptionBuilder.withDescription(GT._("window width x height, e.g. {0}",
+    OptionBuilder.withDescription(GT.$("window width x height, e.g. {0}",
         "-g500x500"));
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("g"));
 
     OptionBuilder.withLongOpt("quality");
-    // OptionBuilder.withDescription(GT._("overall window width x height, e.g. {0}",
+    // OptionBuilder.withDescription(GT.$("overall window width x height, e.g. {0}",
     // "-g512x616"));
     OptionBuilder
         .withDescription(GT
-            ._("JPG image quality (1-100; default 75) or PNG image compression (0-9; default 2, maximum compression 9)"));
+            .$("JPG image quality (1-100; default 75) or PNG image compression (0-9; default 2, maximum compression 9)"));
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("q"));
 
     OptionBuilder.withLongOpt("write");
-    OptionBuilder.withDescription(GT._("{0} or {1}:filename", new Object[] {
+    OptionBuilder.withDescription(GT.$("{0} or {1}:filename", new Object[] {
         "CLIP", "GIF|JPG|JPG64|PNG|PPM" }));
     OptionBuilder.hasArg();
     options.addOption(OptionBuilder.create("w"));
@@ -248,13 +248,13 @@ public class JmolApp {
 
       // now report on the -D options
       System.out.println();
-      System.out.println(GT._("For example:"));
+      System.out.println(GT.$("For example:"));
       System.out.println();
       System.out
           .println("Jmol -ions myscript.spt -w JPEG:myfile.jpg > output.txt");
       System.out.println();
       System.out.println(GT
-          ._("The -D options are as follows (defaults in parenthesis) and must be called preceding '-jar Jmol.jar':"));
+          .$("The -D options are as follows (defaults in parenthesis) and must be called preceding '-jar Jmol.jar':"));
       System.out.println();
       System.out.println("  cdk.debugging=[true|false] (false)");
       System.out.println("  cdk.debug.stdout=[true|false] (false)");
@@ -531,7 +531,7 @@ public class JmolApp {
       if (!isSilent)
         Logger.info("Executing script: " + script1);
       if (splash != null)
-        splash.showStatus(GT._("Executing script 1..."));
+        splash.showStatus(GT.$("Executing script 1..."));
       runScript(script1, isJmolData, viewer);
     }
 
@@ -541,7 +541,7 @@ public class JmolApp {
       if (!isSilent)
         Logger.info("Executing script from file: " + scriptFilename);
       if (splash != null)
-        splash.showStatus(GT._("Executing script file..."));
+        splash.showStatus(GT.$("Executing script file..."));
       if (scriptFilename.equals("-")) {
 
         // -s - option
@@ -562,7 +562,7 @@ public class JmolApp {
       if (!isSilent)
         Logger.info("Executing script: " + script2);
       if (splash != null)
-        splash.showStatus(GT._("Executing script 2..."));
+        splash.showStatus(GT.$("Executing script 2..."));
       runScript(script2, isJmolData, viewer);
     }    
     if (doExit)

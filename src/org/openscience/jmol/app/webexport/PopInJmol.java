@@ -43,7 +43,7 @@ class PopInJmol extends WebPanel implements ChangeListener {
       int panelIndex) {
     super(viewer, fc, webPanels, panelIndex);
     panelName = "pop_in";
-    listLabel = GT._("These names will be used as filenames for the applets");
+    listLabel = GT.$("These names will be used as filenames for the applets");
     // description = "Create a web page with images that convert to live Jmol
     // applets when a user clicks a link";
   }
@@ -69,9 +69,9 @@ class PopInJmol extends WebPanel implements ChangeListener {
 
     // panel to hold spinner and label
     JPanel appletSizeWHPanel = new JPanel();
-    appletSizeWHPanel.add(new JLabel(GT._("Applet width:")));
+    appletSizeWHPanel.add(new JLabel(GT.$("Applet width:")));
     appletSizeWHPanel.add(appletSizeSpinnerW);
-    appletSizeWHPanel.add(new JLabel(GT._("height:")));
+    appletSizeWHPanel.add(new JLabel(GT.$("height:")));
     appletSizeWHPanel.add(appletSizeSpinnerH);
     return (appletSizeWHPanel);
   }
@@ -104,10 +104,10 @@ class PopInJmol extends WebPanel implements ChangeListener {
    }
     if (useAppletJS) {
       appletInfoDivs += "\n<div id=\"" + javaname + "_caption\">\n"
-          + GT.escapeHTML(GT._("insert a caption for {0} here.", name))
+          + GT.escapeHTML(GT.$("insert a caption for {0} here.", name))
           + "\n</div>";
       appletInfoDivs += "\n<div id=\"" + javaname + "_note\">\n"
-          + GT.escapeHTML(GT._("insert a note for {0} here.", name))
+          + GT.escapeHTML(GT.$("insert a note for {0} here.", name))
           + "\n</div>";
       //TODO fix pure javascript to work with widgets...
       appletDefs.append("\naddJmolDiv(" + i + ",'" + divClass + "','"

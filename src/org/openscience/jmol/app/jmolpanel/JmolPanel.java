@@ -228,7 +228,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
     setLayout(new BorderLayout());
 
     status = new StatusBar();
-    say(GT._("Initializing 3D display..."));
+    say(GT.$("Initializing 3D display..."));
 
     // only the SmarterJmolAdapter is allowed -- just send it in as null
 
@@ -261,11 +261,11 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
     if (!jmolApp.haveDisplay)
       return;
     getDialogs();
-    say(GT._("Initializing Script Window..."));
+    say(GT.$("Initializing Script Window..."));
     viewer.getProperty("DATA_API", "getAppConsole", Boolean.TRUE);
 
     // Setup Plugin system
-    // say(GT._("Loading plugins..."));
+    // say(GT.$("Loading plugins..."));
     // pluginManager = new CDKPluginManager(
     // System.getProperty("user.home") + System.getProperty("file.separator")
     // + ".jmol", new JmolEditBus(viewer)
@@ -282,7 +282,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
     // }
 
     // install the command table
-    say(GT._("Building Command Hooks..."));
+    say(GT.$("Building Command Hooks..."));
     commands = new Hashtable<String, Action>();
     if (display != null) {
       Action[] actions = getActions();
@@ -299,7 +299,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
       //builds the JMOL application GUI  <--- important
       JPanel panel = new JPanel();
       menuItems = new Hashtable<String, JMenuItem>();
-      say(GT._("Building Menubar..."));
+      say(GT.$("Building Menubar..."));
       executeScriptAction = new ExecuteScriptAction();
       menubar = createMenubar();
       add("North", menubar);
@@ -324,7 +324,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
       
     }
 
-    say(GT._("Starting display..."));
+    say(GT.$("Starting display..."));
     display.start();
 
     if (jmolApp.menuFile != null) {
@@ -376,7 +376,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
     //if (c != null)
     //historyFile.repositionWindow(EDITOR_WINDOW_NAME, c, 150, 50);
 
-    say(GT._("Setting up Drag-and-Drop..."));
+    say(GT.$("Setting up Drag-and-Drop..."));
     new JmolFileDropper(myStatusListener, viewer);
     // it's important to set this up first, even though it consumes some memory
     // otherwise, loading a new model in a script that sets the vibration or vector parameters
@@ -384,13 +384,13 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
     // will run scripts as it loads.
     atomSetChooser = new AtomSetChooser(viewer, frame);
     pcs.addPropertyChangeListener(chemFileProperty, atomSetChooser);
-    say(GT._("Launching main frame..."));
+    say(GT.$("Launching main frame..."));
   }
 
   private void getDialogs() {
-    say(GT._("Initializing Preferences..."));
+    say(GT.$("Initializing Preferences..."));
     preferencesDialog = new PreferencesDialog(this, frame, guimap, viewer);
-    say(GT._("Initializing Recent Files..."));
+    say(GT.$("Initializing Recent Files..."));
     recentFiles = new RecentFilesDialog(frame);
     if (jmolApp.haveDisplay) {
       if (display.measurementTable != null)
@@ -464,7 +464,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
 
   private static void getJavaConsole(Jmol jmol) {
     // Adding console frame to grab System.out & System.err
-    jmol.consoleframe = new JFrame(GT._("Jmol Java Console"));
+    jmol.consoleframe = new JFrame(GT.$("Jmol Java Console"));
     jmol.consoleframe.setIconImage(jmol.frame.getIconImage());
     try {
       final ConsoleTextArea consoleTextArea = new ConsoleTextArea(true);
@@ -484,7 +484,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
       errorTextArea.setFont(java.awt.Font.decode("monospaced"));
       jmol.consoleframe.getContentPane().add(new JScrollPane(errorTextArea),
           java.awt.BorderLayout.CENTER);
-      errorTextArea.append(GT._("Could not create ConsoleTextArea: ") + e);
+      errorTextArea.append(GT.$("Could not create ConsoleTextArea: ") + e);
     }
 
     
@@ -530,8 +530,8 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
       splash = new Splash((commandOptions != null
           && commandOptions.indexOf("-L") >= 0 ? null : frame), splash_image);
       splash.setCursor(new Cursor(Cursor.WAIT_CURSOR));
-      splash.showStatus(GT._("Creating main window..."));
-      splash.showStatus(GT._("Initializing Swing..."));
+      splash.showStatus(GT.$("Creating main window..."));
+      splash.showStatus(GT.$("Initializing Swing..."));
     }
     if (jmolApp.haveDisplay)
       try {
@@ -542,7 +542,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
       }
 
     if (splash != null)
-      splash.showStatus(GT._("Initializing Jmol..."));
+      splash.showStatus(GT.$("Initializing Jmol..."));
 
     Jmol window = new Jmol(jmolApp, splash, frame, null, jmolApp.startupWidth,
         jmolApp.startupHeight, commandOptions, null);
@@ -631,7 +631,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
     }
     if (numWindows <= 1) {
       // Close Jmol
-      report(GT._("Closing Jmol..."));
+      report(GT.$("Closing Jmol..."));
       // pluginManager.closePlugins();
       System.exit(0);
     } else {
@@ -1217,8 +1217,8 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
 
     OpenUrlAction() {
       super(openurlAction);
-      title = GT._("Open URL");
-      prompt = GT._("Enter URL of molecular model");
+      title = GT.$("Open URL");
+      prompt = GT.$("Enter URL of molecular model");
     }
 
     @Override
@@ -1242,7 +1242,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
     OpenPdbAction() {
       super(openpdbAction);
       script = "var x__id__ = _modelTitle; if (x__id__.length != 4) { x__id__ = '1crn'};x__id__ = prompt('" 
-        + GT._("Enter a four-digit PDB model ID or \"=\" and a three-digit ligand ID") + "',x__id__);if (!x__id__) { quit }; load @{'=' + x__id__}";
+        + GT.$("Enter a four-digit PDB model ID or \"=\" and a three-digit ligand ID") + "',x__id__);if (!x__id__) { quit }; load @{'=' + x__id__}";
     }
   }
 
@@ -1251,7 +1251,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
     OpenMolAction() {
       super(openmolAction);
       script = "var x__id__ = _smilesString; if (!x__id__) { x__id__ = 'tylenol'};x__id__ = prompt('" 
-        + GT._("Enter the name or identifier (SMILES, InChI, CAS) of a compound. Preface with \":\" to load from PubChem; otherwise Jmol will use the NCI/NIH Resolver.")
+        + GT.$("Enter the name or identifier (SMILES, InChI, CAS) of a compound. Preface with \":\" to load from PubChem; otherwise Jmol will use the NCI/NIH Resolver.")
         + "',x__id__);if (!x__id__) { quit }; load @{(x__id__[1]==':' ? x__id__ : '$' + x__id__)}";
     }
 
@@ -1418,7 +1418,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
       return null; // "Jmol, you do it."
     String msg = fileName;
     if (msg != null && !msg.startsWith("OK") && status != null) {
-      status.setStatus(1, GT._("IO Exception:"));
+      status.setStatus(1, GT.$("IO Exception:"));
       status.setStatus(2, msg);
     }
     return msg;
@@ -1547,7 +1547,7 @@ public class JmolPanel extends JPanel implements SplashInterface, JsonNioClient 
      if (data.equals(info))
        return;
    }
-    info = JOptionPane.showInputDialog(GT._("width height?"), data);
+    info = JOptionPane.showInputDialog(GT.$("width height?"), data);
     if (info == null)
       return;
     float[] dims = new float[2];

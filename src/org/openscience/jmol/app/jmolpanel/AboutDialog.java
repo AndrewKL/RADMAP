@@ -54,7 +54,7 @@ public class AboutDialog extends JDialog implements HyperlinkListener {
 
   public AboutDialog(JFrame fr) {
 
-    super(fr, GT._("About Jmol"), true);
+    super(fr, GT.$("About Jmol"), true);
 
     try {
       URL aboutURL =
@@ -64,7 +64,7 @@ public class AboutDialog extends JDialog implements HyperlinkListener {
         html = new JEditorPane(aboutURL);
       } else {
         html = new JEditorPane("text/plain",
-            GT._("Unable to find url \"{0}\".", JmolResourceHandler.getStringX("About.aboutURL")));
+            GT.$("Unable to find url \"{0}\".", JmolResourceHandler.getStringX("About.aboutURL")));
       }
       html.setEditable(false);
       html.addHyperlinkListener(this);
@@ -94,7 +94,7 @@ public class AboutDialog extends JDialog implements HyperlinkListener {
     JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
     try {
-        JButton ok = new JButton(GT._("OK"));
+        JButton ok = new JButton(GT.$("OK"));
         ok.addActionListener(new ActionListener() {
     
           public void actionPerformed(ActionEvent e) {

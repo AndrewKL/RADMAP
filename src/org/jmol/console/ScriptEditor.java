@@ -95,7 +95,7 @@ public final class ScriptEditor extends JDialog implements JmolScriptEditorInter
     super(frame, null, false);
     // from appConsole only;
     setAttributes();
-    setTitle(title = GT._("Jmol Script Editor"));
+    setTitle(title = GT.$("Jmol Script Editor"));
     this.viewer = viewer;
     this.jmolConsole = jmolConsole;
     layoutWindow(getContentPane());
@@ -127,22 +127,22 @@ public final class ScriptEditor extends JDialog implements JmolScriptEditorInter
     editor.setDragEnabled(true);
     JScrollPane editorPane = new JScrollPane(editor);
 
-    consoleButton = setButton(GT._("Console"));
+    consoleButton = setButton(GT.$("Console"));
     if (!viewer.isApplet() || viewer.getBooleanProperty("_signedApplet"))
-      openButton = setButton(GT._("Open"));
-    loadButton = setButton(GT._("Script"));
-    checkButton = setButton(GT._("Check"));
-    topButton = setButton(TextFormat.split(GT._("Top[as in \"go to the top\" - (translators: remove this bracketed part]"), '[')[0]);
-    stepButton = setButton(GT._("Step"));
-    runButton = setButton(GT._("Run"));
-    pauseButton = setButton(GT._("Pause"));
+      openButton = setButton(GT.$("Open"));
+    loadButton = setButton(GT.$("Script"));
+    checkButton = setButton(GT.$("Check"));
+    topButton = setButton(TextFormat.split(GT.$("Top[as in \"go to the top\" - (translators: remove this bracketed part]"), '[')[0]);
+    stepButton = setButton(GT.$("Step"));
+    runButton = setButton(GT.$("Run"));
+    pauseButton = setButton(GT.$("Pause"));
     pauseButton.setEnabled(true);
-    resumeButton = setButton(GT._("Resume"));
+    resumeButton = setButton(GT.$("Resume"));
     resumeButton.setEnabled(false);
-    haltButton = setButton(GT._("Halt"));
+    haltButton = setButton(GT.$("Halt"));
     haltButton.setEnabled(false);
-    clearButton = setButton(GT._("Clear"));
-    closeButton = setButton(GT._("Close"));
+    clearButton = setButton(GT.$("Clear"));
+    closeButton = setButton(GT.$("Close"));
 
     // container.setLayout(new BorderLayout());
     // container.add(editorPane, BorderLayout.CENTER);

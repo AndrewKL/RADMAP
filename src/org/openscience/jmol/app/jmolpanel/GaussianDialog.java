@@ -184,16 +184,16 @@ public class GaussianDialog extends JDialog implements ActionListener,
     super(f, false);
     this.viewer = viewer;
 
-    setTitle(GT._("Export Gaussian Input File"));
+    setTitle(GT.$("Export Gaussian Input File"));
 
     container = new JPanel();
     container.setLayout(new BorderLayout());
     inputTabs = new JTabbedPane();
 
     JPanel basicPanel = buildBasicPanel();
-    inputTabs.addTab(GT._("Basic"), null, basicPanel);
+    inputTabs.addTab(GT.$("Basic"), null, basicPanel);
     JPanel advancedPanel = buildAdvancedPanel();
-    inputTabs.addTab(GT._("Advanced"), null, advancedPanel);
+    inputTabs.addTab(GT.$("Advanced"), null, advancedPanel);
     
     inputTabs.addChangeListener(this);
     
@@ -221,18 +221,18 @@ public class GaussianDialog extends JDialog implements ActionListener,
     JPanel linkLabels = new JPanel(new GridLayout(3,1));
     JPanel linkControls = new JPanel(new GridLayout(3,1));
     
-    JLabel checkLabel = new JLabel(GT._("Checkpoint File: "));
+    JLabel checkLabel = new JLabel(GT.$("Checkpoint File: "));
     linkLabels.add(checkLabel);
     checkField = new JTextField(20);
     linkControls.add(checkField);
     
-    JLabel memLabel = new JLabel(GT._("Amount of Memory:"));
+    JLabel memLabel = new JLabel(GT.$("Amount of Memory:"));
     linkLabels.add(memLabel);
     memBox = new JComboBox(MEMORY_LIST);
     linkControls.add(memBox);
     memBox.setSelectedIndex(0);
     
-    JLabel procLabel = new JLabel(GT._("Number of Processors:"));
+    JLabel procLabel = new JLabel(GT.$("Number of Processors:"));
     linkLabels.add(procLabel);
     SpinnerModel procModel = new SpinnerNumberModel(1, 1, 16, 1);
     procSpinner = new JSpinner(procModel);
@@ -245,20 +245,20 @@ public class GaussianDialog extends JDialog implements ActionListener,
     showPanel.add(linkPanel, BorderLayout.NORTH);
     
     JPanel routePanel = new JPanel(new BorderLayout());
-    TitledBorder routeTitle = BorderFactory.createTitledBorder(GT._("Route"));
+    TitledBorder routeTitle = BorderFactory.createTitledBorder(GT.$("Route"));
     routePanel.setBorder(routeTitle);
     
     JPanel routeLabels = new JPanel(new GridLayout(4,1));
     JPanel routeControls = new JPanel(new GridLayout(4,1));
     
-    JLabel methLabel = new JLabel(GT._("Method: "));
+    JLabel methLabel = new JLabel(GT.$("Method: "));
     routeLabels.add(methLabel);
     methBox = new JComboBox(METHOD_LIST);
     routeControls.add(methBox);
     methBox.setSelectedIndex(0);
     methBox.addActionListener(this);
     
-    JLabel basisLabel = new JLabel(GT._("Basis Set: "));
+    JLabel basisLabel = new JLabel(GT.$("Basis Set: "));
     routeLabels.add(basisLabel);
     basisBox = new JComboBox(BASIS_LIST);
     routeControls.add(basisBox);
@@ -266,13 +266,13 @@ public class GaussianDialog extends JDialog implements ActionListener,
    
     
     JLabel dfLabel = 
-      new JLabel(GT._("Density Fitting Basis Set (DFT Only): "));
+      new JLabel(GT.$("Density Fitting Basis Set (DFT Only): "));
     routeLabels.add(dfLabel);
     dfBox = new JComboBox(DF_LIST);
     routeControls.add(dfBox);
     dfBox.setSelectedIndex(0);
     
-    JLabel optsLabel = new JLabel(GT._("Job Options: "));
+    JLabel optsLabel = new JLabel(GT.$("Job Options: "));
     routeLabels.add(optsLabel);
     optsField = new JTextField(20);
     routeControls.add(optsField);
@@ -285,27 +285,27 @@ public class GaussianDialog extends JDialog implements ActionListener,
     
     JPanel molPanel = new JPanel(new BorderLayout());
     TitledBorder molTitle =
-      BorderFactory.createTitledBorder(GT._("Molecular Properties"));
+      BorderFactory.createTitledBorder(GT.$("Molecular Properties"));
     molPanel.setBorder(molTitle);
     
     JPanel molLabels = new JPanel(new GridLayout(3,1));
     JPanel molControls = new JPanel(new GridLayout(3,1));
     
-    JLabel chargeLabel = new JLabel(GT._("Total Charge: "));
+    JLabel chargeLabel = new JLabel(GT.$("Total Charge: "));
     molLabels.add(chargeLabel);
     SpinnerModel chargeModel = new SpinnerNumberModel(0, -10, 10, 1);
     chargeSpinner = new JSpinner(chargeModel);
     chargeSpinner.setEditor(new JSpinner.NumberEditor(chargeSpinner, "#"));
     molControls.add(chargeSpinner);
     
-    JLabel multLabel = new JLabel(GT._("Multiplicity: "));
+    JLabel multLabel = new JLabel(GT.$("Multiplicity: "));
     molLabels.add(multLabel);
     SpinnerModel multModel = new SpinnerNumberModel(1, 0, 10, 1);
     multSpinner = new JSpinner(multModel);
     multSpinner.setEditor(new JSpinner.NumberEditor(multSpinner, "#"));
     molControls.add(multSpinner);
     
-    JLabel selectLabel = new JLabel(GT._("Selection: "));
+    JLabel selectLabel = new JLabel(GT.$("Selection: "));
     molLabels.add(selectLabel);
     selectField = new JTextField(20);
     selectField.setText("visible");
@@ -340,13 +340,13 @@ public class GaussianDialog extends JDialog implements ActionListener,
 	
     JPanel showPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
     TitledBorder fileTitle =
-	  BorderFactory.createTitledBorder(GT._("Gaussian Input File Name"));
+	  BorderFactory.createTitledBorder(GT.$("Gaussian Input File Name"));
     showPanel.setBorder(fileTitle);
     
     fileField = new JTextField(30);
     showPanel.add(fileField);
     fileField.setText(new File("my_input.com").getAbsolutePath());
-    fileButton = new JButton(GT._("File..."));
+    fileButton = new JButton(GT.$("File..."));
     fileButton.addActionListener(this);
     showPanel.add(fileButton);
     
@@ -357,11 +357,11 @@ public class GaussianDialog extends JDialog implements ActionListener,
     JPanel buttonPanel = new JPanel();
     buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 
-    saveButton = new JButton(GT._("Save"));
+    saveButton = new JButton(GT.$("Save"));
     saveButton.addActionListener(this);
     buttonPanel.add(saveButton);
     
-    cancelButton = new JButton(GT._("Cancel"));
+    cancelButton = new JButton(GT.$("Cancel"));
     cancelButton.addActionListener(this);
     buttonPanel.add(cancelButton);
   

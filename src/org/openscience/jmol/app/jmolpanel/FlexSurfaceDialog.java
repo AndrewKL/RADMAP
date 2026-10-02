@@ -64,7 +64,7 @@ public class FlexSurfaceDialog extends JDialog implements ActionListener, Change
   public FlexSurfaceDialog(JFrame f,Viewer incviewer) {
     
     super(f, false);
-    setTitle(GT._("Flex Surface"));
+    setTitle(GT.$("Flex Surface"));
     
     viewer = incviewer;
     selfreference=this;

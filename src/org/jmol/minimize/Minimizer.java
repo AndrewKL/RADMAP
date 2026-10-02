@@ -214,13 +214,13 @@ public class Minimizer implements MinimizerInterface {
 
     getForceField(ff);
     if (pFF == null) {
-      Logger.error(GT._("Could not get class for force field {0}", ff));
+      Logger.error(GT.$("Could not get class for force field {0}", ff));
       return false;
     }
     Logger.info("minimize: initializing " + pFF.name + " (steps = " + steps + " criterion = "
         + crit + ") ...");
     if (bsSelected.cardinality() == 0) {
-      Logger.error(GT._("No atoms selected -- nothing to do!"));
+      Logger.error(GT.$("No atoms selected -- nothing to do!"));
       return false;
     }
     atoms = viewer.getModelSet().atoms;
@@ -300,7 +300,7 @@ public class Minimizer implements MinimizerInterface {
       minAtoms[pt].sType = atom.getAtomName();
     }
 
-    Logger.info(GT._("{0} atoms will be minimized.", "" + atomCount));
+    Logger.info(GT.$("{0} atoms will be minimized.", "" + atomCount));
     Logger.info("minimize: getting bonds...");
     bonds = viewer.getModelSet().getBonds();
     rawBondCount = viewer.getModelSet().getBondCount();
@@ -315,7 +315,7 @@ public class Minimizer implements MinimizerInterface {
   private boolean setModel(BitSet bsElements) {
     if (!pFF.setModel(bsElements, elemnoMax)) {
       //pFF.log("could not setup force field " + ff);
-      Logger.error(GT._("could not setup force field {0}", ff));
+      Logger.error(GT.$("could not setup force field {0}", ff));
       if (ff.equals("MMFF")) {
         getForceField("UFF");
         //pFF.log("could not setup force field " + ff);

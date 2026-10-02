@@ -4831,7 +4831,7 @@ public class Viewer extends JmolViewer implements AtomDataServer {
         setAppendNew(true);
     }
     if (!isSilent)
-      scriptStatus(GT._("{0} hydrogens added", pts.length));
+      scriptStatus(GT.$("{0} hydrogens added", pts.length));
     return bsB;
   }
 
@@ -4912,7 +4912,7 @@ public class Viewer extends JmolViewer implements AtomDataServer {
         && modelSet.atoms[atomIndex].isShapeVisible(JmolConstants
             .getShapeVisibilityFlag(JmolConstants.SHAPE_LABELS))) {
       setShapeProperty(JmolConstants.SHAPE_HOVER, "specialLabel", GT
-          ._("Drag to move label"));
+          .$("Drag to move label"));
     }
     setShapeProperty(JmolConstants.SHAPE_HOVER, "text", null);
     setShapeProperty(JmolConstants.SHAPE_HOVER, "target", Integer
@@ -8705,7 +8705,7 @@ public class Viewer extends JmolViewer implements AtomDataServer {
       return c.clipImage(text);
     } catch (Error er) {
       // unsigned applet will not have this interface
-      return GT._("clipboard is not accessible -- use signed applet");
+      return GT.$("clipboard is not accessible -- use signed applet");
     }
   }
 
@@ -9512,11 +9512,11 @@ public class Viewer extends JmolViewer implements AtomDataServer {
       }
     }
     if (value == null || isRestricted()) {
-      Logger.info(GT._("Cannot set log file path."));
+      Logger.info(GT.$("Cannot set log file path."));
       value = null;
     } else {
       if (path != null)
-        Logger.info(GT._("Setting log file to {0}", path));
+        Logger.info(GT.$("Setting log file to {0}", path));
       logFile = path;
     }
     return value;

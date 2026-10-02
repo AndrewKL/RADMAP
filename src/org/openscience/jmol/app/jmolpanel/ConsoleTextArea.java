@@ -83,7 +83,7 @@ public class ConsoleTextArea extends JTextArea {
             s = br.readLine();
           }
         } catch (IOException e) {
-          JOptionPane.showMessageDialog(null, GT._(
+          JOptionPane.showMessageDialog(null, GT.$(
               "Error reading from BufferedReader: {0}", e.getMessage()));
           System.exit(1);
         }

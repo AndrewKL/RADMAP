@@ -193,23 +193,23 @@ public class AppletConsole extends JmolConsole implements JmolAppConsoleInterfac
 
   @Override
   protected void setupLabels() {
-    labels.put("help", GT._("&Help"));
-    labels.put("search", GT._("&Search..."));
-    labels.put("commands", GT._("&Commands"));
-    labels.put("functions", GT._("Math &Functions"));
-    labels.put("parameters", GT._("Set &Parameters"));
-    labels.put("more", GT._("&More"));
-    labels.put("Editor", GT._("Editor"));
-    labels.put("State", GT._("State"));
-    labels.put("Run", GT._("Run"));
-    labels.put("Clear Output", GT._("Clear Output"));
-    labels.put("Clear Input", GT._("Clear Input"));
-    labels.put("History", GT._("History"));
-    labels.put("Load", GT._("Load"));
+    labels.put("help", GT.$("&Help"));
+    labels.put("search", GT.$("&Search..."));
+    labels.put("commands", GT.$("&Commands"));
+    labels.put("functions", GT.$("Math &Functions"));
+    labels.put("parameters", GT.$("Set &Parameters"));
+    labels.put("more", GT.$("&More"));
+    labels.put("Editor", GT.$("Editor"));
+    labels.put("State", GT.$("State"));
+    labels.put("Run", GT.$("Run"));
+    labels.put("Clear Output", GT.$("Clear Output"));
+    labels.put("Clear Input", GT.$("Clear Input"));
+    labels.put("History", GT.$("History"));
+    labels.put("Load", GT.$("Load"));
     labels.put("label1", GT
-        ._("press CTRL-ENTER for new line or paste model data and press Load"));
+        .$("press CTRL-ENTER for new line or paste model data and press Load"));
     labels.put("default",
-        GT._("Messages will appear here. Enter commands in the box below. Click the console Help menu item for on-line help, which will appear in a new browser window."));
+        GT.$("Messages will appear here. Enter commands in the box below. Click the console Help menu item for on-line help, which will appear in a new browser window."));
   }
 
   protected JMenuBar createMenubar() {
